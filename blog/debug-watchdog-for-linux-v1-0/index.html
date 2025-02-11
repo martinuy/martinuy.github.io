@@ -14,14 +14,14 @@
 <link rel="shortcut icon" href="https://martin.uy/resources/favicon.png" type="image/png">
 
 <script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
-<title>Who prints &#8220;(core dumped)&#8221; after a segmentation fault? &#8211; martin.uy</title>
+<title>Debug Watchdog for Linux (v1.0) &#8211; martin.uy</title>
 <meta name="robots" content="max-image-preview:large">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link href="https://fonts.gstatic.com/" crossorigin rel="preconnect">
 <link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; Feed" href="./../feed/index.html">
 <link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; Comments Feed" href="./../comments/feed/index.html">
-<link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; Who prints &#8220;(core dumped)&#8221; after a segmentation fault? Comments Feed" href="./feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; Debug Watchdog for Linux (v1.0) Comments Feed" href="./feed/index.html">
 <script type="text/javascript">
 /* <![CDATA[ */
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":".\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.1"}};
@@ -30,8 +30,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 /* ]]> */
 </script>
 <link rel="stylesheet" id="crayon-css" href="./../wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta" type="text/css" media="all">
-<link rel="stylesheet" id="crayon-theme-classic-css" href="./../wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=_2.7.2_beta" type="text/css" media="all">
-<link rel="stylesheet" id="crayon-font-monospace-css" href="./../wp-content/plugins/crayon-syntax-highlighter/fonts/monospace.css?ver=_2.7.2_beta" type="text/css" media="all">
 <style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
 		display: inline !important;
 		border: none !important;
@@ -68,13 +66,13 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 <script type="text/javascript" src=".//wp-content/themes/twentyseventeen/assets/js/html5.js?ver=3.7.3" id="html5-js"></script>
 <![endif]-->
 <link rel="https://api.w.org/" href="./../wp-json/index.html">
-<link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/467/index.html">
+<link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/13/index.html">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 6.7.1">
 <link rel="canonical" href="./index.html">
-<link rel="shortlink" href="./../index.html?p=467">
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fwho-prints-core-dumped-after-a-segmentation-fault%2F">
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fwho-prints-core-dumped-after-a-segmentation-fault%2F#038;format=xml">
+<link rel="shortlink" href="./../index.html?p=13">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fdebug-watchdog-for-linux-v1-0%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fdebug-watchdog-for-linux-v1-0%2F#038;format=xml">
 <link rel="pingback" href="./../xmlrpc.php">
 	<style id="twentyseventeen-custom-header-styles" type="text/css">.site-title,
 		.site-description {
@@ -83,7 +81,7 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 		}</style>
 	</head>
 
-<body class="post-template-default single single-post postid-467 single-format-standard wp-custom-logo has-sidebar title-tagline-hidden colors-light">
+<body class="post-template-default single single-post postid-13 single-format-standard wp-custom-logo has-sidebar title-tagline-hidden colors-light">
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 
@@ -126,298 +124,54 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 		<main id="main" class="site-main" role="main">
 
 			
-<article id="post-467" class="post-467 post type-post status-publish format-standard hentry category-linux category-linux-kernel">
+<article id="post-13" class="post-13 post type-post status-publish format-standard hentry category-linux">
 		<header class="entry-header">
-		<div class="entry-meta"><span class="posted-on"><span class="screen-reader-text">Posted on</span> <a href="./index.html" rel="bookmark"><time class="entry-date published" datetime="2019-01-30T03:04:20+00:00">January 30, 2019</time><time class="updated" datetime="2020-05-19T01:11:18+00:00">May 19, 2020</time></a></span></div>
-<!-- .entry-meta --><h1 class="entry-title">Who prints &#8220;(core dumped)&#8221; after a segmentation fault?</h1>	</header><!-- .entry-header -->
+		<div class="entry-meta"><span class="posted-on"><span class="screen-reader-text">Posted on</span> <a href="./index.html" rel="bookmark"><time class="entry-date published" datetime="2017-11-12T06:05:40+00:00">November 12, 2017</time><time class="updated" datetime="2020-05-19T01:17:47+00:00">May 19, 2020</time></a></span></div>
+<!-- .entry-meta --><h1 class="entry-title">Debug Watchdog for Linux (v1.0)</h1>	</header><!-- .entry-header -->
 
 	
 	<div class="entry-content">
-		<p>When a CLI process in Linux exits after a segmentation fault, the following message is typically printed to <em>stdout</em>: &#8220;Segmentation fault (core dumped)&#8221;. We are assuming here that the process did not register a handler for the SIGSEGV signal. I was a bit curious about who was printing the message so started to dig a bit.</p>
-<p>My first hypothesis was that <em>libc</em> had a default handler for this signal. After running the application with <em>strace,</em> I found no <em>sys_write</em> system call: the application and its libraries were not printing anything.</p>
-<p>If a process registers no handler for SIGSEGV, <em>do_coredump</em> function (<em>fs/coredump.c</em> &#8211; Linux kernel) is executed. Caught my attention that the Kernel creates a new task and launches a user mode application. This application is <em>/usr/libexec/abrt-hook-ccpp</em> in Fedora, and the goal is to record and report the crash. I ran <em>strings</em> over its binary and dynamically linked libraries (libc, libreport, libabrt, etc.) but no clues.</p>
-<p><span id="more-467"></span></p>
-<p>After some more source code <em>grepping</em> over potential candidates, such as <em>systemd-coredump</em>, my curiosity was even larger and finally opted for the hard way: monitor every single <em>sys_write</em> system call in the kernel.</p>
-<p>The first place to insert a monitor code was <em>n_tty_write</em> function (<em>drivers/tty/n_tty.c</em> &#8211; Linux kernel), as every TTY write hits there. I set a breakpoint in the monitor code and it was immediately triggered. Looking at the task memory map, I realized it was <em>bash</em>. But then I thought: what if it&#8217;s not <em>bash</em> but a child process sending the message through a pipe?</p>
-<p>A second monitor code was placed a bit higher in the call stack: <em>__vfs_write</em> function (<em>fs/read_write.c</em> &#8211; Linux kernel). A breakpoint there was hit and it was <em>bash</em> again. Downloaded the <em>bash</em> source and could verify it.</p>
-<p>Here it&#8217;s the monitor:</p>
-<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
-
-		<div id="crayon-67ab129ccca91844447502" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
-		
-			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
-<span class="crayon-title"></span>
-			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
-<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
-<span class="crayon-language">C</span>
-</div>
-</div>
-			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
-			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
-unsigned char* kBuf = NULL;
-if (count &gt; 0) {
-    kBuf = (unsigned char*)kmalloc(count + 1, GFP_KERNEL);
-    if (kBuf != NULL) {
-        memset(kBuf, 0, count + 1);
-        if (copy_from_user(kBuf, p, count) == 0) {
-            if (strstr(kBuf, "core dumped")) {
-                asm("nop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\t");
-                printk("PID: %d\n", current-&gt;pid);
-                asm("nop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\t");
-            }
-        }
-        kfree(kBuf);
-    }
-}</textarea></div>
-			<div class="crayon-main">
-				<table class="crayon-table">
-					<tr class="crayon-row">
-				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ab129ccca91844447502-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca91844447502-2">2</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca91844447502-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca91844447502-4">4</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca91844447502-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca91844447502-6">6</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca91844447502-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca91844447502-8">8</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca91844447502-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca91844447502-10">10</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca91844447502-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca91844447502-12">12</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca91844447502-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca91844447502-14">14</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca91844447502-15">15</div>
-</div>
-				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ab129ccca91844447502-1">
-<span class="crayon-t">unsigned</span><span class="crayon-h"> </span><span class="crayon-t">char</span>*<span class="crayon-h"> </span><span class="crayon-i">kBuf</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-t">NULL</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca91844447502-2">
-<span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">count</span><span class="crayon-h"> </span><span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca91844447502-3">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">kBuf</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-t">unsigned</span><span class="crayon-h"> </span><span class="crayon-t">char</span>*<span class="crayon-sy">)</span><span class="crayon-e">kmalloc</span><span class="crayon-sy">(</span><span class="crayon-i">count</span><span class="crayon-h"> </span>+<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">GFP_KERNEL</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca91844447502-4">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">kBuf</span><span class="crayon-h"> </span><span class="crayon-sy">!</span>=<span class="crayon-h"> </span><span class="crayon-t">NULL</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca91844447502-5">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">memset</span><span class="crayon-sy">(</span><span class="crayon-i">kBuf</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">count</span><span class="crayon-h"> </span>+<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca91844447502-6">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">copy_from_user</span><span class="crayon-sy">(</span><span class="crayon-i">kBuf</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">p</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">count</span><span class="crayon-sy">)</span><span class="crayon-h"> </span>==<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca91844447502-7">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">strstr</span><span class="crayon-sy">(</span><span class="crayon-i">kBuf</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"core dumped"</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca91844447502-8">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">asm</span><span class="crayon-sy">(</span><span class="crayon-s">"nop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\t"</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca91844447502-9">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">printk</span><span class="crayon-sy">(</span><span class="crayon-s">"PID: %d\n"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">current</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">pid</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca91844447502-10">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">asm</span><span class="crayon-sy">(</span><span class="crayon-s">"nop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\t"</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca91844447502-11">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca91844447502-12">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca91844447502-13">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">kfree</span><span class="crayon-sy">(</span><span class="crayon-i">kBuf</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca91844447502-14">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca91844447502-15"><span class="crayon-sy">}</span></div>
-</div></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-<!-- [Format Time: 0.0006 seconds] -->
-<p>Notes: 1)<em> nops</em> are there to make finding the address for the breakpoint easier, and 2) <em>memset</em> could probably be removed if using the proper flags when calling <em>kmalloc</em>.</p>
-<p>Here it&#8217;s how it looks in assembly:</p>
-<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
-
-		<div id="crayon-67ab129ccca95505168887" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
-		
-			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
-<span class="crayon-title"></span>
-			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
-<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
-</div>
-</div>
-			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
-			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
-0xffffffff81271cae &lt;__vfs_write+510&gt;:        nop
-0xffffffff81271caf &lt;__vfs_write+511&gt;:        nop
-0xffffffff81271cb0 &lt;__vfs_write+512&gt;:        nop
-0xffffffff81271cb1 &lt;__vfs_write+513&gt;:        nop
-0xffffffff81271cb2 &lt;__vfs_write+514&gt;:        nop
-0xffffffff81271cb3 &lt;__vfs_write+515&gt;:        nop
-0xffffffff81271cb4 &lt;__vfs_write+516&gt;:        nop
-0xffffffff81271cb5 &lt;__vfs_write+517&gt;:        mov    %gs:0xd300,%rax
-0xffffffff81271cbe &lt;__vfs_write+526&gt;:        mov    0x900(%rax),%esi
-0xffffffff81271cc4 &lt;__vfs_write+532&gt;:        mov    $0xffffffff81ca0551,%rdi
-0xffffffff81271ccb &lt;__vfs_write+539&gt;:        callq  0xffffffff811065c1 &lt;printk&gt;
-0xffffffff81271cd0 &lt;__vfs_write+544&gt;:        nop
-0xffffffff81271cd1 &lt;__vfs_write+545&gt;:        nop
-0xffffffff81271cd2 &lt;__vfs_write+546&gt;:        nop
-0xffffffff81271cd3 &lt;__vfs_write+547&gt;:        nop
-0xffffffff81271cd4 &lt;__vfs_write+548&gt;:        nop
-0xffffffff81271cd5 &lt;__vfs_write+549&gt;:        nop
-0xffffffff81271cd6 &lt;__vfs_write+550&gt;:        nop</textarea></div>
-			<div class="crayon-main">
-				<table class="crayon-table">
-					<tr class="crayon-row">
-				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-2">2</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-4">4</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-6">6</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-8">8</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-10">10</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-12">12</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-14">14</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-15">15</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-16">16</div>
-<div class="crayon-num" data-line="crayon-67ab129ccca95505168887-17">17</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca95505168887-18">18</div>
-</div>
-				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-1">
-<span class="crayon-cn">0xffffffff81271cae</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">510</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-2">
-<span class="crayon-cn">0xffffffff81271caf</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">511</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-3">
-<span class="crayon-cn">0xffffffff81271cb0</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">512</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-4">
-<span class="crayon-cn">0xffffffff81271cb1</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">513</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-5">
-<span class="crayon-cn">0xffffffff81271cb2</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">514</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-6">
-<span class="crayon-cn">0xffffffff81271cb3</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">515</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-7">
-<span class="crayon-cn">0xffffffff81271cb4</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">516</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-8">
-<span class="crayon-cn">0xffffffff81271cb5</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">517</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">mov</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">%</span><span class="crayon-i">gs</span><span class="crayon-sy">:</span><span class="crayon-cn">0xd300</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">rax</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-9">
-<span class="crayon-cn">0xffffffff81271cbe</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">526</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">mov</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x900</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rax</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">esi</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-10">
-<span class="crayon-cn">0xffffffff81271cc4</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">532</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">mov</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-cn">0xffffffff81ca0551</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">rdi</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-11">
-<span class="crayon-cn">0xffffffff81271ccb</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">539</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">callq</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0xffffffff811065c1</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">printk</span><span class="crayon-h">&gt;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-12">
-<span class="crayon-cn">0xffffffff81271cd0</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">544</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-13">
-<span class="crayon-cn">0xffffffff81271cd1</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">545</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-14">
-<span class="crayon-cn">0xffffffff81271cd2</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">546</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-15">
-<span class="crayon-cn">0xffffffff81271cd3</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">547</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-16">
-<span class="crayon-cn">0xffffffff81271cd4</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">548</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ccca95505168887-17">
-<span class="crayon-cn">0xffffffff81271cd5</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">549</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca95505168887-18">
-<span class="crayon-cn">0xffffffff81271cd6</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">__vfs_write</span>+<span class="crayon-cn">550</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">nop</span>
-</div>
-</div></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-<!-- [Format Time: 0.0009 seconds] -->
-<p><em>RAX</em> register has a pointer to the <em>current</em> task struct.</p>
-<p>This is how we can have a look at the task memory map and determine the file associated to the first segment:</p>
-<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
-
-		<div id="crayon-67ab129ccca96084217430" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
-		
-			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
-<span class="crayon-title"></span>
-			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
-<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
-<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
-</div>
-</div>
-			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
-			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
-(gdb) x/s ((struct task_struct*)$rax)-&gt;mm-&gt;mmap-&gt;vm_file-&gt;f_path-&gt;dentry-&gt;d_name-&gt;name  
-0xffff88007b7de278:     "bash"</textarea></div>
-			<div class="crayon-main">
-				<table class="crayon-table">
-					<tr class="crayon-row">
-				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ab129ccca96084217430-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ccca96084217430-2">2</div>
-</div>
-				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ab129ccca96084217430-1">
-<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">x</span>/<span class="crayon-e">s</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">(</span><span class="crayon-t">struct</span><span class="crayon-h"> </span><span class="crayon-e ">task_struct*</span><span class="crayon-sy">)</span><span class="crayon-sy">$</span><span class="crayon-i">rax</span><span class="crayon-sy">)</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">mm</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">mmap</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">vm_file</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">f_path</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">dentry</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">d_name</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">name</span><span class="crayon-h">&nbsp;&nbsp;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ccca96084217430-2">
-<span class="crayon-cn">0xffff88007b7de278</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">"bash"</span>
-</div>
-</div></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-<!-- [Format Time: 0.0002 seconds] -->
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+		<p><a href="https://martin.uy/blog/wp-content/uploads/2017/11/screenshot_v1.0.png" target="_blank" rel="noopener"><img fetchpriority="high" decoding="async" class="alignnone wp-image-16 size-full" src="https://martin.uy/blog/wp-content/uploads/2017/11/screenshot_v1.0.png" alt="Debug Watchdog for Linux (v1.0). Fedora 25." width="1360" height="639" srcset="./../wp-content/uploads/2017/11/screenshot_v1.0.png 1360w, ./../wp-content/uploads/2017/11/screenshot_v1.0-300x141.png 300w, ./../wp-content/uploads/2017/11/screenshot_v1.0-768x361.png 768w, ./../wp-content/uploads/2017/11/screenshot_v1.0-1024x481.png 1024w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px"></a></p>
+<p><strong>Debug Watchdog for Linux</strong> (v1.0) is a new tool to monitor a Linux system and stop processes of chosen executable binaries immediately after launched. Once stopped, it&#8217;s possible to start a <em>gdb</em> debugging session right from the first instruction, as if <em>gdb &#8211;wait-for-process exec.bin</em> command existed. It may also be useful to analyze the process parameters and environmental variables. Code is open source, under a GPL license.</p>
+<p>Every executable binary is caught: no matter how it was launched (command line, graphical user interface, ssh daemon, etc.), with which user or privileges nor how long it lives. This effectiveness is achieved patching the system calls table in kernel space and hooking <em>sys_execve</em>. Values are restored when Debug Watchdog is turned off. For obvious reasons, this tool is intended for non-production environments only.</p>
+<p><span id="more-13"></span></p>
+<p>The difference with user-space approaches, such as periodically polling the list of processes and attaching a debugger, is effectiveness: it&#8217;s hard to catch short-lived processes without kernel help and do it from the first instruction almost impossible.</p>
+<p>Debug Watchdog has the following components:</p>
+<ul>
+<li>Kernel module (C)</li>
+<li>Library (C)</li>
+<li>Test (C)</li>
+<li>UI (C++ / Qt)</li>
+</ul>
+<p><strong>Kernel module</strong></p>
+<p>The kernel module is loaded by the application when started. Only one process from user-space can communicate with the kernel module, through IOCTLs. If the process dies, a new one can take ownership. It&#8217;s important to notice that CAP_SYS_MODULE capability is required to dynamically load a kernel module from user-space (running with <em>root</em> will make it).</p>
+<p>Once turned <em>on</em>, a hook is installed in <em>sys_execve</em> patching the system calls table. Every time a process executes <em>sys_execve</em>, the hook code performs the real function and then compares the executable binary with the watch list. If there is a match, a SIGSTOP signal is sent to the process before returning to user-space. The targeted process cannot handle or ignore this signal and will be stopped before executing its first instruction. A debugger can then be attached.</p>
+<p><strong>Library</strong></p>
+<p>The library, running in user space, is the only component that communicates with the kernel module. Main operations are: initialize or finalize the kernel module, watch or un-watch an executable binary and notify the application about a stopped process by means of a callback. Instead of continuously polling the kernel module to get the list of stopped processes, a SIGUSR1 signal is sent to notify of an update. The library has a dedicated thread to handle these notifications, with thread-safety mechanisms in place.</p>
+<p><strong>Test</strong></p>
+<p>The automated test case will load the library, initialize everything and spawn an <em>ls</em> executable binary to be stopped. It may be useful to understand the library API and rapidly test your setup.</p>
+<p><strong>UI</strong></p>
+<p>The graphical user interface was implemented in Qt5 and loads the library to enable the back-end functionality. <em>gnome-terminal </em>is required to launch <em>gdb</em> from the UI.</p>
+<p>Only x86_64 architecture is currently supported. Tested on Fedora 25 (kernel 4.12.12-200).</p>
+<p>Further information:</p>
+<ul>
+<li>
+<a href="https://github.com/martinuy/debugwatchdog">GitHub (source code and compiled binaries)</a>
+<ul>
+<li><a href="https://martin.uy/hosting/blog/debugwatchdog/debugwatchdog.zip">Source backup</a></li>
+</ul>
+</li>
+<li><a href="https://vimeo.com/242313860">Screencast (demo)</a></li>
+<li><a href="https://raw.githubusercontent.com/martinuy/debugwatchdog/master/docs/README">README</a></li>
+<li>Slides (PDF): <a href="http://martin.uy/hosting/blog/debugwatchdog/Debug_Watchdog_for_Linux_ES.pdf">Spanish</a> &#8211; <a href="https://martin.uy/hosting/blog/debugwatchdog/Debug_Watchdog_for_Linux_EN.pdf">English</a>
+</li>
+</ul>
+<p>Any feedback, bug reports or contributions are welcomed 🙂</p>
+<p><em>Update (2018-05-22): <a href="https://martin.uy/blog/debug-watchdog-for-linux-v1-1-released/">Debug Watchdog for Linux v1.1</a> released.</em></p>
 	</div>
 <!-- .entry-content -->
 
-	<footer class="entry-footer"><span class="cat-tags-links"><span class="cat-links"><svg class="icon icon-folder-open" aria-hidden="true" role="img"> <use href="#icon-folder-open" xlink:href="#icon-folder-open"></use> </svg><span class="screen-reader-text">Categories</span><a href="./../category/linux/index.html" rel="category tag">Linux</a>, <a href="./../category/linux-kernel/index.html" rel="category tag">Linux kernel</a></span></span></footer> <!-- .entry-footer -->
+	<footer class="entry-footer"><span class="cat-tags-links"><span class="cat-links"><svg class="icon icon-folder-open" aria-hidden="true" role="img"> <use href="#icon-folder-open" xlink:href="#icon-folder-open"></use> </svg><span class="screen-reader-text">Categories</span><a href="./../category/linux/index.html" rel="category tag">Linux</a></span></span></footer> <!-- .entry-footer -->
 </article><!-- #post-## -->
 
 <div id="comments" class="comments-area">
@@ -428,10 +182,7 @@ if (count &gt; 0) {
 
 	<nav class="navigation post-navigation" aria-label="Posts">
 		<h2 class="screen-reader-text">Post navigation</h2>
-		<div class="nav-links">
-<div class="nav-previous"><a href="./../understanding-the-gcc_except_table-section-in-elf-binaries-gcc/index.html" rel="prev"><span class="screen-reader-text">Previous Post</span><span aria-hidden="true" class="nav-subtitle">Previous</span> <span class="nav-title"><span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-left" aria-hidden="true" role="img"> <use href="#icon-arrow-left" xlink:href="#icon-arrow-left"></use> </svg></span>Understanding the .gcc_except_table section in ELF binaries (GCC)</span></a></div>
-<div class="nav-next"><a href="./../pthread_cancel-glibc-stack-unwinding/index.html" rel="next"><span class="screen-reader-text">Next Post</span><span aria-hidden="true" class="nav-subtitle">Next</span> <span class="nav-title">pthread_cancel and stack unwinding<span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-right" aria-hidden="true" role="img"> <use href="#icon-arrow-right" xlink:href="#icon-arrow-right"></use> </svg></span></span></a></div>
-</div>
+		<div class="nav-links"><div class="nav-next"><a href="./../debugging-hotspot-openjdk-jvm-x86_64-interpreter-in-linux/index.html" rel="next"><span class="screen-reader-text">Next Post</span><span aria-hidden="true" class="nav-subtitle">Next</span> <span class="nav-title">Debugging the OpenJDK JVM interpreter in Linux x86_64<span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-right" aria-hidden="true" role="img"> <use href="#icon-arrow-right" xlink:href="#icon-arrow-right"></use> </svg></span></span></a></div></div>
 	</nav>
 		</main><!-- #main -->
 	</div>
@@ -482,10 +233,10 @@ if (count &gt; 0) {
 			</section><section id="search-2" class="widget widget_search">
 
 <form role="search" method="get" class="search-form" action=".//">
-	<label for="search-form-67ab129cd08c8">
+	<label for="search-form-67ab129c0cc7e">
 		<span class="screen-reader-text">Search for:</span>
 	</label>
-	<input type="search" id="search-form-67ab129cd08c8" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<input type="search" id="search-form-67ab129c0cc7e" class="search-field" placeholder="Search &hellip;" value="" name="s">
 	<button type="submit" class="search-submit"><svg class="icon icon-search" aria-hidden="true" role="img"> <use href="#icon-search" xlink:href="#icon-search"></use> </svg><span class="screen-reader-text">Search</span></button>
 </form>
 </section></aside><!-- #secondary -->

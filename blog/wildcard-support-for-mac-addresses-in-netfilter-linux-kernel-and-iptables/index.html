@@ -137,7 +137,7 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 <p><em>Netfilter</em> and <em>iptables</em> -its user-space counter part- let you filter network packets based on their source MAC address. However, there is currently no option to match all packets that meet a specific pattern (i.e.: those with prefix from a certain vendor). A wildcards syntax would be enough to accomplish this goal. In example, the following rule should drop every incoming packet on the <em>ens3</em> interface:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67aad78a9ce31703124396" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67ab129d07984143781764" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -157,16 +157,16 @@ iptables -A INPUT -i ens3 -m mac --mac-source *:*:*:*:*:* -j DROP</textarea></di
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67aad78a9ce31703124396-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129d07984143781764-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67aad78a9ce31703124396-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129d07984143781764-1">
 <span class="crayon-i">iptables</span><span class="crayon-h"> </span>-<span class="crayon-i">A</span><span class="crayon-h"> </span><span class="crayon-i">INPUT</span><span class="crayon-h"> </span>-<span class="crayon-i">i</span><span class="crayon-h"> </span><span class="crayon-i">ens3</span><span class="crayon-h"> </span>-<span class="crayon-i">m</span><span class="crayon-h"> </span><span class="crayon-i">mac</span><span class="crayon-h"> </span>--<span class="crayon-i">mac</span>-<span class="crayon-e ">source *</span><span class="crayon-sy">:</span>*<span class="crayon-sy">:</span>*<span class="crayon-sy">:</span>*<span class="crayon-sy">:</span>*<span class="crayon-sy">:</span>*<span class="crayon-h"> </span>-<span class="crayon-i">j</span><span class="crayon-h"> </span><span class="crayon-i">DROP</span>
 </div></div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0001 seconds] -->
+<!-- [Format Time: 0.0002 seconds] -->
 <p>A quick lookup in the Linux kernel source and in <em>iptables</em> brought me to a couple of files probably required by the implementation of this functionality: <em>net/netfilter/xt_mac.c</em> (kernel) and <em>libxtables/xtoptions.c</em> (<em>iptables</em>). The former is related to the decision of whether a packet should pass or not when filtering by MAC address. The latter has the <em>iptables</em> options parsing code, through which we can specify matching rules.</p>
 <p><span id="more-176"></span></p>
 <p>A possible implementation -not ready for production use- is at the end of this article. This implementation has a drawback: there is ambiguity between the wildcard character &#8216;*&#8217; and the byte 0x2A (valid MAC address byte). As a result, we may want to filter the 2A:2A:2A:2A:2A:2A MAC address but all packets will skip the rule because this is equal to the *:*:*:*:*:* rule. A separate data structure to represent the mask would have been enough.</p>
@@ -184,23 +184,6 @@ iptables -A INPUT -i ens3 -m mac --mac-source *:*:*:*:*:* -j DROP</textarea></di
 
 <div id="comments" class="comments-area">
 
-		<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="./index.html#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action=".//wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
-<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
-<p class="comment-form-author"><label for="author">Name</label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name"></p>
-<p class="comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email"></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="176" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="f5f67389d4"></p>
-<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="237"></p>
-</form>	</div>
-<!-- #respond -->
 	
 </div>
 <!-- #comments -->
@@ -261,10 +244,10 @@ iptables -A INPUT -i ens3 -m mac --mac-source *:*:*:*:*:* -j DROP</textarea></di
 			</section><section id="search-2" class="widget widget_search">
 
 <form role="search" method="get" class="search-form" action=".//">
-	<label for="search-form-67aad78a9ffb1">
+	<label for="search-form-67ab129d0aa97">
 		<span class="screen-reader-text">Search for:</span>
 	</label>
-	<input type="search" id="search-form-67aad78a9ffb1" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<input type="search" id="search-form-67ab129d0aa97" class="search-field" placeholder="Search &hellip;" value="" name="s">
 	<button type="submit" class="search-submit"><svg class="icon icon-search" aria-hidden="true" role="img"> <use href="#icon-search" xlink:href="#icon-search"></use> </svg><span class="screen-reader-text">Search</span></button>
 </form>
 </section></aside><!-- #secondary -->
@@ -298,7 +281,6 @@ var twentyseventeenScreenReaderText = {"quote":"<svg class=\"icon icon-quote-rig
 <script type="text/javascript" src="./../wp-content/themes/twentyseventeen/assets/js/global.js?ver=1.0" id="twentyseventeen-global-js"></script>
 <script type="text/javascript" src="./../wp-content/themes/twentyseventeen/assets/js/jquery.scrollTo.js?ver=2.1.2" id="jquery-scrollto-js"></script>
 <script type="text/javascript" src="./../wp-includes/js/comment-reply.min.js?ver=6.7.1" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
-<script type="text/javascript" src="./../wp-content/plugins/akismet/_inc/form.js?ver=4.0" id="akismet-form-js"></script>
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="icon-behance" viewbox="0 0 37 32">

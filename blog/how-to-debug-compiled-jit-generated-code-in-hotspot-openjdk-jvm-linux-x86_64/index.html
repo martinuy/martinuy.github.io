@@ -14,14 +14,14 @@
 <link rel="shortcut icon" href="https://martin.uy/resources/favicon.png" type="image/png">
 
 <script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
-<title>Some noise to C1 JIT compiler for x86_64 (OpenJDK JVM &#8211; Hotspot) &#8211; martin.uy</title>
+<title>How to debug JIT compiled methods in OpenJDK JVM? &#8211; martin.uy</title>
 <meta name="robots" content="max-image-preview:large">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link href="https://fonts.gstatic.com/" crossorigin rel="preconnect">
 <link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; Feed" href="./../feed/index.html">
 <link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; Comments Feed" href="./../comments/feed/index.html">
-<link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; Some noise to C1 JIT compiler for x86_64 (OpenJDK JVM &#8211; Hotspot) Comments Feed" href="./feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; How to debug JIT compiled methods in OpenJDK JVM? Comments Feed" href="./feed/index.html">
 <script type="text/javascript">
 /* <![CDATA[ */
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":".\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.1"}};
@@ -68,13 +68,13 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 <script type="text/javascript" src=".//wp-content/themes/twentyseventeen/assets/js/html5.js?ver=3.7.3" id="html5-js"></script>
 <![endif]-->
 <link rel="https://api.w.org/" href="./../wp-json/index.html">
-<link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/190/index.html">
+<link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/79/index.html">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 6.7.1">
 <link rel="canonical" href="./index.html">
-<link rel="shortlink" href="./../index.html?p=190">
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fsome-noise-to-c1-jit-compiler-for-x86_64-openjdk-jvm-hotspot%2F">
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fsome-noise-to-c1-jit-compiler-for-x86_64-openjdk-jvm-hotspot%2F#038;format=xml">
+<link rel="shortlink" href="./../index.html?p=79">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fhow-to-debug-compiled-jit-generated-code-in-hotspot-openjdk-jvm-linux-x86_64%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fhow-to-debug-compiled-jit-generated-code-in-hotspot-openjdk-jvm-linux-x86_64%2F#038;format=xml">
 <link rel="pingback" href="./../xmlrpc.php">
 	<style id="twentyseventeen-custom-header-styles" type="text/css">.site-title,
 		.site-description {
@@ -83,7 +83,7 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 		}</style>
 	</head>
 
-<body class="post-template-default single single-post postid-190 single-format-standard wp-custom-logo has-sidebar title-tagline-hidden colors-light">
+<body class="post-template-default single single-post postid-79 single-format-standard wp-custom-logo has-sidebar title-tagline-hidden colors-light">
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 
@@ -126,22 +126,88 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 		<main id="main" class="site-main" role="main">
 
 			
-<article id="post-190" class="post-190 post type-post status-publish format-standard hentry category-openjdk">
+<article id="post-79" class="post-79 post type-post status-publish format-standard hentry category-openjdk">
 		<header class="entry-header">
-		<div class="entry-meta"><span class="posted-on"><span class="screen-reader-text">Posted on</span> <a href="./index.html" rel="bookmark"><time class="entry-date published" datetime="2018-02-10T03:44:39+00:00">February 10, 2018</time><time class="updated" datetime="2020-05-19T01:16:19+00:00">May 19, 2020</time></a></span></div>
-<!-- .entry-meta --><h1 class="entry-title">Some noise to C1 JIT compiler for x86_64 (OpenJDK JVM &#8211; Hotspot)</h1>	</header><!-- .entry-header -->
+		<div class="entry-meta"><span class="posted-on"><span class="screen-reader-text">Posted on</span> <a href="./index.html" rel="bookmark"><time class="entry-date published" datetime="2018-01-09T23:14:44+00:00">January 9, 2018</time><time class="updated" datetime="2020-08-12T03:44:03+00:00">August 12, 2020</time></a></span></div>
+<!-- .entry-meta --><h1 class="entry-title">How to debug JIT compiled methods in OpenJDK JVM?</h1>	</header><!-- .entry-header -->
 
 	
 	<div class="entry-content">
-		<p><a href="https://www.quarkslab.com/"><strong>Quarkslab</strong></a> folks proposed a challenge:  modify any compiler to generate code with some obfuscation but valid semantics. In other words, add some noise but keep the program logic valid.</p>
-<p>Time to have some fun with <strong>C1</strong>: OpenJDK&#8217;s 1st tier JIT compiler.</p>
-<p>Obfuscation &#8220;noise&#8221; can be added at different stages of the compilation process. Adding it early may be useful to target multiple architectures but it&#8217;s necessary to check if following optimization passes revert the effect.</p>
-<p><span id="more-190"></span></p>
-<p>The basic flow for C1 is the following: Java bytecodes -&gt; IR (Intermediate Representation) -&gt; LIR (Low-level Intermediate Representation) -&gt; assembly code (architecture specific). A few key functions involved in these transformations: <em>GraphBuilder::iterate_bytecodes_for_block</em> (for IR generation), <em>LIRGenerator::block_do</em> (for LIR generation) and <em>LIR_Assembler::emit_lir_list</em> (for assembly generation).</p>
-<p>This is my basic <em>pseudo-random</em> Java test code -don&#8217;t even try to make sense of it!-:</p>
+		<p><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-239" src="https://martin.uy/blog/wp-content/uploads/2018/03/openjdk.png" alt="" width="2000" height="567" srcset="./../wp-content/uploads/2018/03/openjdk.png 2000w, ./../wp-content/uploads/2018/03/openjdk-300x85.png 300w, ./../wp-content/uploads/2018/03/openjdk-768x218.png 768w, ./../wp-content/uploads/2018/03/openjdk-1024x290.png 1024w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px"></p>
+<p>In the <a href="https://martin.uy/blog/debugging-hotspot-openjdk-jvm-x86_64-interpreter-in-linux/">previous article</a> we explored a couple of strategies to debug the OpenJDK JVM <em>bytecodes</em> interpreter. I will now present a procedure to debug JIT compiled code.</p>
+<p>There are some JVM arguments useful to get information about JIT compiled methods:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ab129ba423d369848740" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67ab129bcc97d796982975" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+-Xcomp -XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly -XX:PrintAssemblyOptions=hsdis-print-bytes -XX:+LogCompilation -XX:LogFile=/tmp/java_compilation_log.log</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129bcc97d796982975-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129bcc97d796982975-1">-<span class="crayon-i">Xcomp</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">UnlockDiagnosticVMOptions</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">PrintAssembly</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span><span class="crayon-i">PrintAssemblyOptions</span>=<span class="crayon-i">hsdis</span>-<span class="crayon-i">print</span>-<span class="crayon-i">bytes</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">LogCompilation</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span><span class="crayon-i">LogFile</span>=/<span class="crayon-i">tmp</span>/<span class="crayon-i">java_compilation_log</span><span class="crayon-sy">.</span><span class="crayon-i">log</span>
+</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p>Note: <em>+PrintAssembly</em> argument can be used to disassemble compiled code but requires a plugin library called <em>hsdis</em> in some JDK releases such as 8. In <em>hotspot/src/share/tools/hsdis</em> directory you will find the plugin code. To build it, open a command line and run:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc980511346082" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+<span class="crayon-language">Shell</span>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+export BINUTILS=&lt;path-to-binutils&gt; &amp;&amp; touch $BINUTILS/bfd/doc/bfd.info &amp;&amp; make all64</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129bcc980511346082-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129bcc980511346082-1">
+<span class="crayon-e">export </span><span class="crayon-i">BINUTILS</span>=<span class="crayon-h">&lt;</span><span class="crayon-i">path</span>-<span class="crayon-st">to</span>-<span class="crayon-i">binutils</span><span class="crayon-h">&gt;</span><span class="crayon-h"> </span>&&<span class="crayon-h"> </span><span class="crayon-r">touch</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-i">BINUTILS</span>/<span class="crayon-i">bfd</span>/<span class="crayon-i">doc</span>/<span class="crayon-i">bfd</span><span class="crayon-e">.info</span><span class="crayon-h"> </span>&&<span class="crayon-h"> </span><span class="crayon-r">make</span><span class="crayon-h"> </span><span class="crayon-i">all64</span>
+</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p>Once built, copy <em>build/linux-amd64/hsdis-amd64.so</em> library to <em>jre/lib/amd64</em> and <em>jre/lib/amd64/server</em> directories.</p>
+<p><span id="more-79"></span></p>
+<p>Let&#8217;s see an example.</p>
+<p>Java code:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc982757567014" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -158,28 +224,11 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
 			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
 public class Main {
-    
-    private static volatile int a;
-    private static String s;
 
-    public static void main(String[] args) {
-        System.out.println("Jit example started");
-        
-        int max_iterations = 15000;
-        while(max_iterations-- &gt; 0) {
-            f();
-        }
-        
-        System.out.println("a (final): " + a);
-        System.out.println("s (final): " + s);
-    }
-    
-    private static void f() {
-        int i = 100;
-        while (i-- &gt; 0) {
-            a = a + 1234;
-        }
-        s = new Integer(a).toString();
+    public static volatile int exitCode = 0xff;
+
+    public static void main(String[] args) throws Throwable {
+        System.exit(exitCode);
     }
 
 }</textarea></div>
@@ -188,110 +237,47 @@ public class Main {
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-2">2</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-4">4</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-6">6</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-8">8</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-10">10</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-12">12</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-14">14</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-15">15</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-16">16</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-17">17</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-18">18</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-19">19</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-20">20</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-21">21</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-22">22</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-23">23</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-24">24</div>
-<div class="crayon-num" data-line="crayon-67ab129ba423d369848740-25">25</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba423d369848740-26">26</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc982757567014-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc982757567014-2">2</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc982757567014-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc982757567014-4">4</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc982757567014-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc982757567014-6">6</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc982757567014-7">7</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc982757567014-8">8</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc982757567014-9">9</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-1">
+<div class="crayon-line" id="crayon-67ab129bcc982757567014-1">
 <span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">Main</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-3">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-m">volatile</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-sy">;</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc982757567014-2">&nbsp;</div>
+<div class="crayon-line" id="crayon-67ab129bcc982757567014-3">
+<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-m">volatile</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-i">exitCode</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0xff</span><span class="crayon-sy">;</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-4">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-i">s</span><span class="crayon-sy">;</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc982757567014-4">&nbsp;</div>
+<div class="crayon-line" id="crayon-67ab129bcc982757567014-5">
+<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-t">String</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-i">args</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-m">throws</span><span class="crayon-h"> </span><span class="crayon-e">Throwable</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-5">&nbsp;</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-6">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-t">String</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-i">args</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc982757567014-6">
+<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">System</span><span class="crayon-sy">.</span><span class="crayon-e">exit</span><span class="crayon-sy">(</span><span class="crayon-i">exitCode</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-7">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">System</span><span class="crayon-sy">.</span><span class="crayon-i">out</span><span class="crayon-sy">.</span><span class="crayon-e">println</span><span class="crayon-sy">(</span><span class="crayon-s">"Jit example started"</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-9">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-i">max_iterations</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">15000</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-10">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">while</span><span class="crayon-sy">(</span><span class="crayon-i">max_iterations</span>--<span class="crayon-h"> </span><span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-11">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">f</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-12">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-14">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">System</span><span class="crayon-sy">.</span><span class="crayon-i">out</span><span class="crayon-sy">.</span><span class="crayon-e">println</span><span class="crayon-sy">(</span><span class="crayon-s">"a (final): "</span><span class="crayon-h"> </span>+<span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-15">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">System</span><span class="crayon-sy">.</span><span class="crayon-i">out</span><span class="crayon-sy">.</span><span class="crayon-e">println</span><span class="crayon-sy">(</span><span class="crayon-s">"s (final): "</span><span class="crayon-h"> </span>+<span class="crayon-h"> </span><span class="crayon-i">s</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-16">
+<div class="crayon-line" id="crayon-67ab129bcc982757567014-7">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-18">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">f</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-19">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-i">i</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">100</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-20">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">while</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">i</span>--<span class="crayon-h"> </span><span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-21">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">a</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-h"> </span>+<span class="crayon-h"> </span><span class="crayon-cn">1234</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-22">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-23">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">s</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-t">Integer</span><span class="crayon-sy">(</span><span class="crayon-i">a</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">toString</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-24">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba423d369848740-25">&nbsp;</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba423d369848740-26"><span class="crayon-sy">}</span></div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc982757567014-8">&nbsp;</div>
+<div class="crayon-line" id="crayon-67ab129bcc982757567014-9"><span class="crayon-sy">}</span></div>
 </div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0007 seconds] -->
-<p>Function Main::f is called many times in a loop so it will be compiled by C1 first.</p>
-<p>This is Main::f in <em>bytecodes</em>:</p>
+<!-- [Format Time: 0.0003 seconds] -->
+<p>Main::main JIT method information:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ab129ba4241782172354" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67ab129bcc983189363843" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -306,120 +292,154 @@ public class Main {
 </div>
 			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
 			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
-private static void f();
- Code:
- 0: bipush 100
- 2: istore_0
- 3: iload_0
- 4: iinc 0, -1
- 7: ifle 23
- 10: getstatic #6 // Field a:I
- 13: sipush 1234
- 16: iadd
- 17: putstatic #6 // Field a:I
- 20: goto 3
- 23: new #10 // class java/lang/Integer
- 26: dup
- 27: getstatic #6 // Field a:I
- 30: invokespecial #11 // Method java/lang/Integer."&lt;init&gt;":(I)V
- 33: invokevirtual #12 // Method java/lang/Integer.toString:()Ljava/lang/String;
- 36: putstatic #8 // Field s:Ljava/lang/String;
- 39: return</textarea></div>
+PrintAssembly request changed to PrintOptoAssembly
+{method}
+ - this oop:          0x00007ffba04642b8
+ - method holder:     'Main'
+ - constants:         0x00007ffba0464058 constant pool [29] {0x00007ffba0464058} for 'Main' cache=0x00007ffba04643c8
+ - access:            0x81000009  public static 
+ - name:              'main'
+ - signature:         '([Ljava/lang/String;)V'
+ - max stack:         2
+ - max locals:        1
+ - size of params:    1
+ - method size:       13
+ - highest level:     3
+ - vtable index:      -2
+ - i2i entry:         0x00007ffb8d023be0
+ - adapters:          AHE@0x00007ffb9c0fbdb8: 0xb0000000 i2c: 0x00007ffb8d1466a0 c2i: 0x00007ffb8d1467da c2iUV: 0x00007ffb8d1467ad
+ - compiled entry     0x00007ffb8d571ec0
+ - code size:         7
+ - code start:        0x00007ffba04642a8
+ - code end (excl):   0x00007ffba04642af
+ - method data:       0x00007ffba04645b8
+ - checked ex length: 1
+ - checked ex start:  0x00007ffba04642b4
+ - linenumber start:  0x00007ffba04642af
+ - localvar length:   0
+ - compiled code: nmethod  16800  876       3       Main::main (7 bytes)</textarea></div>
 			<div class="crayon-main">
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-2">2</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-4">4</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-6">6</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-8">8</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-10">10</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-12">12</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-14">14</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-15">15</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-16">16</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-17">17</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4241782172354-18">18</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4241782172354-19">19</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-2">2</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-4">4</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-6">6</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-7">7</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-8">8</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-9">9</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-10">10</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-11">11</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-12">12</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-13">13</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-14">14</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-15">15</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-16">16</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-17">17</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-18">18</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-19">19</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-20">20</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-21">21</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-22">22</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-23">23</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-24">24</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc983189363843-25">25</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc983189363843-26">26</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-1">
-<span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">f</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-1">
+<span class="crayon-e">PrintAssembly</span><span class="crayon-h"> </span><span class="crayon-e">request</span><span class="crayon-h"> </span><span class="crayon-e">changed</span><span class="crayon-h"> </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">PrintOptoAssembly</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-2">
-<span class="crayon-h"> </span><span class="crayon-i">Code</span><span class="crayon-sy">:</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-2">
+<span class="crayon-sy">{</span><span class="crayon-i">method</span><span class="crayon-sy">}</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-3">
-<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">bipush</span><span class="crayon-h"> </span><span class="crayon-cn">100</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-3">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-r">this</span><span class="crayon-h"> </span><span class="crayon-i">oop</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x00007ffba04642b8</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-4">
-<span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">istore_0</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-4">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">method </span><span class="crayon-i">holder</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'Main'</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-5">
-<span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">iload_0</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-5">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">constants</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffba0464058</span><span class="crayon-h"> </span><span class="crayon-e">constant</span><span class="crayon-h"> </span><span class="crayon-e">pool</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-cn">29</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-cn">0x00007ffba0464058</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-s">'Main'</span><span class="crayon-h"> </span><span class="crayon-i">cache</span>=<span class="crayon-cn">0x00007ffba04643c8</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-6">
-<span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">iinc</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span>-<span class="crayon-cn">1</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-6">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">access</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x81000009</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-7">
-<span class="crayon-h"> </span><span class="crayon-cn">7</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">ifle</span><span class="crayon-h"> </span><span class="crayon-cn">23</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-7">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">name</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s">'main'</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-8">
-<span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">getstatic</span><span class="crayon-h"> </span><span class="crayon-p">#6 // Field a:I</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-8">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">signature</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'([Ljava/lang/String;)V'</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-9">
-<span class="crayon-h"> </span><span class="crayon-cn">13</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">sipush</span><span class="crayon-h"> </span><span class="crayon-cn">1234</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-9">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">max </span><span class="crayon-i">stack</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">2</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-10">
-<span class="crayon-h"> </span><span class="crayon-cn">16</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">iadd</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-10">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">max </span><span class="crayon-i">locals</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">1</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-11">
-<span class="crayon-h"> </span><span class="crayon-cn">17</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">putstatic</span><span class="crayon-h"> </span><span class="crayon-p">#6 // Field a:I</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-11">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">size </span><span class="crayon-e">of </span><span class="crayon-i">params</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">1</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-12">
-<span class="crayon-h"> </span><span class="crayon-cn">20</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-st">goto</span><span class="crayon-h"> </span><span class="crayon-cn">3</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-12">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">method </span><span class="crayon-i">size</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">13</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-13">
-<span class="crayon-h"> </span><span class="crayon-cn">23</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-p">#10 // class java/lang/Integer</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-13">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">highest </span><span class="crayon-i">level</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">3</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-14">
-<span class="crayon-h"> </span><span class="crayon-cn">26</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">dup</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-14">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">vtable </span><span class="crayon-i">index</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-cn">2</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-15">
-<span class="crayon-h"> </span><span class="crayon-cn">27</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">getstatic</span><span class="crayon-h"> </span><span class="crayon-p">#6 // Field a:I</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-15">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">i2i </span><span class="crayon-i">entry</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffb8d023be0</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-16">
-<span class="crayon-h"> </span><span class="crayon-cn">30</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">invokespecial</span><span class="crayon-h"> </span><span class="crayon-p">#11 // Method java/lang/Integer."&lt;init&gt;":(I)V</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-16">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">adapters</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">AHE</span><span class="crayon-sy">@</span><span class="crayon-cn">0x00007ffb9c0fbdb8</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0xb0000000</span><span class="crayon-h"> </span><span class="crayon-i">i2c</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0x00007ffb8d1466a0</span><span class="crayon-h"> </span><span class="crayon-i">c2i</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0x00007ffb8d1467da</span><span class="crayon-h"> </span><span class="crayon-i">c2iUV</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0x00007ffb8d1467ad</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-17">
-<span class="crayon-h"> </span><span class="crayon-cn">33</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">invokevirtual</span><span class="crayon-h"> </span><span class="crayon-p">#12 // Method java/lang/Integer.toString:()Ljava/lang/String;</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-17">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">compiled </span><span class="crayon-i">entry</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffb8d571ec0</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4241782172354-18">
-<span class="crayon-h"> </span><span class="crayon-cn">36</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">putstatic</span><span class="crayon-h"> </span><span class="crayon-p">#8 // Field s:Ljava/lang/String;</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-18">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">code </span><span class="crayon-i">size</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">7</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4241782172354-19">
-<span class="crayon-h"> </span><span class="crayon-cn">39</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-st">return</span>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-19">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">code </span><span class="crayon-i">start</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x00007ffba04642a8</span>
+</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-20">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">code </span><span class="crayon-st">end</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">excl</span><span class="crayon-sy">)</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffba04642af</span>
+</div>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-21">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">method </span><span class="crayon-i">data</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffba04645b8</span>
+</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-22">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">checked </span><span class="crayon-e">ex </span><span class="crayon-i">length</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">1</span>
+</div>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-23">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">checked </span><span class="crayon-e">ex </span><span class="crayon-i">start</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x00007ffba04642b4</span>
+</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-24">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">linenumber </span><span class="crayon-i">start</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x00007ffba04642af</span>
+</div>
+<div class="crayon-line" id="crayon-67ab129bcc983189363843-25">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">localvar </span><span class="crayon-i">length</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0</span>
+</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc983189363843-26">
+<span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">compiled </span><span class="crayon-i">code</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">nmethod</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">16800</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">876</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">3</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-i">Main</span><span class="crayon-sy">:</span><span class="crayon-sy">:</span><span class="crayon-e">main</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-cn">7</span><span class="crayon-h"> </span><span class="crayon-i">bytes</span><span class="crayon-sy">)</span>
 </div>
 </div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0005 seconds] -->
-<p>My obfuscation noise will be before any addition operation. In this case, before the <em>iadd</em> instruction.</p>
-<p>This will be my x86_64 innocuous noise:</p>
+<!-- [Format Time: 0.0012 seconds] -->
+<p>Main::main JIT method code:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ab129ba4242658991793" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67ab129bcc984678584608" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -434,63 +454,167 @@ private static void f();
 </div>
 			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
 			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
-          PUSHFD
-          PUSH RAX
-          PUSH RDX
-tryAgain:
-          RDTSC
-          CMP EAX, EDX
-          JE tryAgain
-          POP RDX
-          POP RAX
-          POPFD</textarea></div>
+000   B1: #	N1 &lt;- BLOCK HEAD IS JUNK   Freq: 1
+000   	# stack bang (104 bytes)
+	pushq   rbp	# Save rbp
+	subq    rsp, #16	# Create frame
+
+00c   	movl    RSI, #21	# int
+011   	movq    R10, java/lang/Class:exact *	# ptr
+01b   	movl    R11, [R10 + #104 (8-bit)]	# int ! Field: volatile Main.exitCode
+01f   	MEMBAR-acquire ! (empty encoding)
+01f   	movl    RBP, R11	# spill
+      	nop 	# 1 bytes pad for loops and calls
+023   	call,static  wrapper for: uncommon_trap(reason='unloaded' action='reinterpret' index='21')
+        # Main::main @ bci:3  L[0]=_ STK[0]=RBP
+        # OopMap{off=40}
+028   	int3	# ShouldNotReachHere</textarea></div>
 			<div class="crayon-main">
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ab129ba4242658991793-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4242658991793-2">2</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4242658991793-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4242658991793-4">4</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4242658991793-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4242658991793-6">6</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4242658991793-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4242658991793-8">8</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4242658991793-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4242658991793-10">10</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc984678584608-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc984678584608-2">2</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc984678584608-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc984678584608-4">4</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc984678584608-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc984678584608-6">6</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc984678584608-7">7</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc984678584608-8">8</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc984678584608-9">9</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc984678584608-10">10</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc984678584608-11">11</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc984678584608-12">12</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc984678584608-13">13</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc984678584608-14">14</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc984678584608-15">15</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ab129ba4242658991793-1">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">PUSHFD</span>
+<div class="crayon-line" id="crayon-67ab129bcc984678584608-1">
+<span class="crayon-cn">000</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-i">B1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-p">#	N1 &lt;- BLOCK HEAD IS JUNK&nbsp;&nbsp; Freq: 1</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4242658991793-2">
-<span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">PUSH </span><span class="crayon-e">RAX</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc984678584608-2">
+<span class="crayon-cn">000</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-p"># stack bang (104 bytes)</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4242658991793-3">
-<span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">PUSH </span><span class="crayon-e">RDX</span>
+<div class="crayon-line" id="crayon-67ab129bcc984678584608-3">
+<span class="crayon-h">	</span><span class="crayon-e">pushq&nbsp;&nbsp; </span><span class="crayon-i">rbp</span><span class="crayon-h">	</span><span class="crayon-p"># Save rbp</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4242658991793-4">
-<span class="crayon-i">tryAgain</span><span class="crayon-sy">:</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc984678584608-4">
+<span class="crayon-h">	</span><span class="crayon-e">subq&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">rsp</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-p">#16	# Create frame</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4242658991793-5">
-<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">RDTSC</span>
+<div class="crayon-line" id="crayon-67ab129bcc984678584608-5">&nbsp;</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc984678584608-6">
+<span class="crayon-cn">00c</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-e">movl&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">RSI</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-p">#21	# int</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4242658991793-6">
-<span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">CMP </span><span class="crayon-i">EAX</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">EDX</span>
+<div class="crayon-line" id="crayon-67ab129bcc984678584608-7">
+<span class="crayon-cn">011</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-e">movq&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">R10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">java</span>/<span class="crayon-i">lang</span>/<span class="crayon-t">Class</span><span class="crayon-sy">:</span><span class="crayon-e ">exact *</span><span class="crayon-h">	</span><span class="crayon-p"># ptr</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4242658991793-7">
-<span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">JE </span><span class="crayon-e">tryAgain</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc984678584608-8">
+<span class="crayon-cn">01b</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-e">movl&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">R11</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-i">R10</span><span class="crayon-h"> </span>+<span class="crayon-h"> </span><span class="crayon-p">#104 (8-bit)]	# int ! Field: volatile Main.exitCode</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4242658991793-8">
-<span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">POP </span><span class="crayon-e">RDX</span>
+<div class="crayon-line" id="crayon-67ab129bcc984678584608-9">
+<span class="crayon-cn">01f</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-i">MEMBAR</span>-<span class="crayon-i">acquire</span><span class="crayon-h"> </span><span class="crayon-sy">!</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">empty </span><span class="crayon-i">encoding</span><span class="crayon-sy">)</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4242658991793-9">
-<span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">POP </span><span class="crayon-e">RAX</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc984678584608-10">
+<span class="crayon-cn">01f</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-e">movl&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">RBP</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">R11</span><span class="crayon-h">	</span><span class="crayon-p"># spill</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4242658991793-10">
-<span class="crayon-e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">POPFD</span>
+<div class="crayon-line" id="crayon-67ab129bcc984678584608-11">
+<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-i">nop</span><span class="crayon-h"> 	</span><span class="crayon-p"># 1 bytes pad for loops and calls</span>
+</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc984678584608-12">
+<span class="crayon-cn">023</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-i">call</span><span class="crayon-sy">,</span><span class="crayon-m">static</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-e">wrapper </span><span class="crayon-st">for</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">uncommon_trap</span><span class="crayon-sy">(</span><span class="crayon-i">reason</span>=<span class="crayon-s">'unloaded'</span><span class="crayon-h"> </span><span class="crayon-i">action</span>=<span class="crayon-s">'reinterpret'</span><span class="crayon-h"> </span><span class="crayon-i">index</span>=<span class="crayon-s">'21'</span><span class="crayon-sy">)</span>
+</div>
+<div class="crayon-line" id="crayon-67ab129bcc984678584608-13">
+<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-p"># Main::main @ bci:3&nbsp;&nbsp;L[0]=_ STK[0]=RBP</span>
+</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc984678584608-14">
+<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-p"># OopMap{off=40}</span>
+</div>
+<div class="crayon-line" id="crayon-67ab129bcc984678584608-15">
+<span class="crayon-cn">028</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-i">int3</span><span class="crayon-h">	</span><span class="crayon-p"># ShouldNotReachHere</span>
+</div>
+</div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p>You see there how the <em>Main::exitCode</em> field value is loaded into a register, and a call to a static method -System::exit, presumably- is made.</p>
+<p>The JVM allows transitions from interpreted <em>bytecodes</em> to JIT compiled methods and viceversa. For this to be accomplished, methods have adapters which arrange the call frame according to the source and destination ABIs.</p>
+<p>Once an adapter to JIT compiled code is executed, the native method starts. If we look at Main::main information above, <em>compiled entry</em> has the starting address. Our goal is to set a breakpoint there.</p>
+<p>Contrary to the <a href="https://martin.uy/blog/debugging-hotspot-openjdk-jvm-x86_64-interpreter-in-linux/">JVM interpreter</a> -which is generated at the beginning-, JIT methods may be generated at any time. Even more: they can be re-compiled multiple times and by different compilers. As a result, we need to stop every time the method is generated and before its execution.</p>
+<p><a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/76a9c9cf14f1/src/share/vm/compiler/compileBroker.cpp#l1919">CompileBroker::invoke_compiler_on_method(CompileTask*)</a> is an interesting point in that regard. This is where methods get compiled either by C1, C2 or any other JIT compiler. In particular, right after the <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/76a9c9cf14f1/src/share/vm/compiler/compileBroker.cpp#l2000">task-&gt;code()</a> call, the compiled method is ready:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc985873884495" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+<span class="crayon-language">C++</span>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+if (!ci_env.failing() &amp;&amp; task-&gt;code() == NULL) {</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129bcc985873884495-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129bcc985873884495-1">
+<span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">!</span><span class="crayon-i">ci_env</span><span class="crayon-sy">.</span><span class="crayon-e">failing</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span>&&<span class="crayon-h"> </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-e">code</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span>==<span class="crayon-h"> </span><span class="crayon-t">NULL</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
+</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p>If we look at the assembly in x86_64, here is the exact point:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc986529449186" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+<span class="crayon-language">Assembly (x86)</span>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+0x00007ffff6084947 &lt;+1555&gt;:	callq  0x7ffff607f486 &lt;CompileTask::code() const&gt;
+0x00007ffff608494c &lt;+1560&gt;:	test   %rax,%rax</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
+<div class="crayon-num" data-line="crayon-67ab129bcc986529449186-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc986529449186-2">2</div>
+</div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div class="crayon-line" id="crayon-67ab129bcc986529449186-1">
+<span class="crayon-r ">0x00007ffff6084947</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span>+<span class="crayon-cn">1555</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">	</span><span class="crayon-v ">callq</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x7ffff607f486</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-v ">CompileTask</span><span class="crayon-sy">:</span><span class="crayon-sy">:</span><span class="crayon-v ">code</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-v ">const</span><span class="crayon-h">&gt;</span>
+</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc986529449186-2">
+<span class="crayon-r ">0x00007ffff608494c</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span>+<span class="crayon-cn">1560</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">	</span><span class="crayon-v ">test</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-v ">%rax</span><span class="crayon-sy">,</span><span class="crayon-v ">%rax</span>
 </div>
 </div></td>
 					</tr>
@@ -498,11 +622,57 @@ tryAgain:
 			</div>
 		</div>
 <!-- [Format Time: 0.0001 seconds] -->
-<p>I&#8217;m saving the EFLAGS, RAX and RDX registers first because their values will be destroyed -restoring original values is mandatory to keep the state integrity after the obfuscation code-. Then I get the timestamp with RDTSC and compare the lower and higher halves. They will likely be different. In the unrealistic case that they are equal, we try again. Then we restore original values and continue execution as if nothing happened.</p>
-<p>In x86_64, this is Main::f JIT compiled method:</p>
+<p>We will then set our breakpoint right after the call to <em>CompileTask::code</em>. Note: if rebuilding the JVM is possible, we can add a filter to only break in the method of our interest:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ab129ba4243992670693" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67ab129bcc987493157100" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+<span class="crayon-language">C++</span>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") == 0) {
+    volatile int a = 1;
+}</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
+<div class="crayon-num" data-line="crayon-67ab129bcc987493157100-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc987493157100-2">2</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc987493157100-3">3</div>
+</div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div class="crayon-line" id="crayon-67ab129bcc987493157100-1">
+<span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">strcmp</span><span class="crayon-sy">(</span><span class="crayon-i">target</span>-<span class="crayon-h">&gt;</span><span class="crayon-e">name</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span>-<span class="crayon-h">&gt;</span><span class="crayon-e">as_utf8</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"&lt;method_name_of_interest&gt;"</span><span class="crayon-sy">)</span><span class="crayon-h"> </span>==<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
+</div>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc987493157100-2">
+<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">volatile</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">;</span>
+</div>
+<div class="crayon-line" id="crayon-67ab129bcc987493157100-3"><span class="crayon-sy">}</span></div>
+</div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p>We now have all the information needed about the compiled method:</p>
+<p><strong>Method name</strong></p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc988313540240" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -517,134 +687,26 @@ tryAgain:
 </div>
 			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
 			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
-0x7f03f570c0c5:      cmp    $0x0,%esi
-0x7f03f570c0c8:      je     0x7f03f570c281
-0x7f03f570c0ce:      mov    $0x64,%edx
-0x7f03f570c0d3:      jmpq   0x7f03f570c12f
-0x7f03f570c0d8:      movabs $0x6d9a02658,%rdx
-0x7f03f570c0e2:      mov    0x74(%rdx),%esi
-0x7f03f570c0e5:      pushfq 
-0x7f03f570c0e6:      push   %rax
-0x7f03f570c0e7:      push   %rdx
-0x7f03f570c0e8:      rdtsc  
-0x7f03f570c0ea:      cmp    %edx,%eax
-0x7f03f570c0ec:      je     0x7f03f570c0e8
-0x7f03f570c0ee:      pop    %rdx
-0x7f03f570c0ef:      pop    %rax
-0x7f03f570c0f0:      popfq  
-0x7f03f570c0f1:      add    $0x4d2,%esi
-0x7f03f570c0f7:      mov    %esi,0x74(%rdx)
-0x7f03f570c0fa:      lock addl $0x0,-0x40(%rsp)
-0x7f03f570c100:      movabs $0x7f03d5cfcc60,%rdx
-0x7f03f570c10a:      mov    0x24(%rdx),%esi
-0x7f03f570c10d:      add    $0x8,%esi
-0x7f03f570c110:      mov    %esi,0x24(%rdx)</textarea></div>
+(gdb) x/s target-&gt;_name-&gt;_symbol-&gt;_body</textarea></div>
 			<div class="crayon-main">
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-2">2</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-4">4</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-6">6</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-8">8</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-10">10</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-12">12</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-14">14</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-15">15</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-16">16</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-17">17</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-18">18</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-19">19</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-20">20</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4243992670693-21">21</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4243992670693-22">22</div>
-</div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129bcc988313540240-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-1">
-<span class="crayon-cn">0x7f03f570c0c5</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">cmp</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-cn">0x0</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">esi</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-2">
-<span class="crayon-cn">0x7f03f570c0c8</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">je</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x7f03f570c281</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-3">
-<span class="crayon-cn">0x7f03f570c0ce</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">mov</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-cn">0x64</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">edx</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-4">
-<span class="crayon-cn">0x7f03f570c0d3</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">jmpq</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0x7f03f570c12f</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-5">
-<span class="crayon-cn">0x7f03f570c0d8</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">movabs</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-cn">0x6d9a02658</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">rdx</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-6">
-<span class="crayon-cn">0x7f03f570c0e2</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">mov</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x74</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rdx</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">esi</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-7">
-<span class="crayon-cn">0x7f03f570c0e5</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">pushfq</span><span class="crayon-h"> </span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-8">
-<span class="crayon-cn">0x7f03f570c0e6</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">push</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-sy">%</span><span class="crayon-i">rax</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-9">
-<span class="crayon-cn">0x7f03f570c0e7</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">push</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-sy">%</span><span class="crayon-i">rdx</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-10">
-<span class="crayon-cn">0x7f03f570c0e8</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">rdtsc</span><span class="crayon-h">&nbsp;&nbsp;</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-11">
-<span class="crayon-cn">0x7f03f570c0ea</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">cmp</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">%</span><span class="crayon-i">edx</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">eax</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-12">
-<span class="crayon-cn">0x7f03f570c0ec</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">je</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x7f03f570c0e8</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-13">
-<span class="crayon-cn">0x7f03f570c0ee</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">pop</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">%</span><span class="crayon-i">rdx</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-14">
-<span class="crayon-cn">0x7f03f570c0ef</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">pop</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">%</span><span class="crayon-i">rax</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-15">
-<span class="crayon-cn">0x7f03f570c0f0</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">popfq</span><span class="crayon-h">&nbsp;&nbsp;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-16">
-<span class="crayon-cn">0x7f03f570c0f1</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">add</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-cn">0x4d2</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">esi</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-17">
-<span class="crayon-cn">0x7f03f570c0f7</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">mov</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">%</span><span class="crayon-i">esi</span><span class="crayon-sy">,</span><span class="crayon-cn">0x74</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rdx</span><span class="crayon-sy">)</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-18">
-<span class="crayon-cn">0x7f03f570c0fa</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">lock </span><span class="crayon-i">addl</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-cn">0x0</span><span class="crayon-sy">,</span>-<span class="crayon-cn">0x40</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rsp</span><span class="crayon-sy">)</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-19">
-<span class="crayon-cn">0x7f03f570c100</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">movabs</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-cn">0x7f03d5cfcc60</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">rdx</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-20">
-<span class="crayon-cn">0x7f03f570c10a</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">mov</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x24</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rdx</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">esi</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4243992670693-21">
-<span class="crayon-cn">0x7f03f570c10d</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">add</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-cn">0x8</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">esi</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4243992670693-22">
-<span class="crayon-cn">0x7f03f570c110</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">mov</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">%</span><span class="crayon-i">esi</span><span class="crayon-sy">,</span><span class="crayon-cn">0x24</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rdx</span><span class="crayon-sy">)</span>
-</div>
-</div></td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129bcc988313540240-1">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">x</span>/<span class="crayon-i">s</span><span class="crayon-h"> </span><span class="crayon-i">target</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_name</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_symbol</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_body</span>
+</div></div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0009 seconds] -->
-<p>I then decided to add some unaligned jumps as an anti-disassembly technique. Main::f now looks a bit more obscure:</p>
+<!-- [Format Time: 0.0001 seconds] -->
+<p>&nbsp;</p>
+<p><strong>Compiler level (C1, C2)</strong></p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ab129ba4244515239300" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67ab129bcc989613802189" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -659,106 +721,188 @@ tryAgain:
 </div>
 			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
 			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
-0x7f4b64c52865:      push   %rax
-0x7f4b64c52866:      lea    0x5(%rip),%rax        # 0x7f4b64c52872
-0x7f4b64c5286d:      jmpq   *%rax
-0x7f4b64c5286f:      callq  0x7f4b66b0d32f
-0x7f4b64c52874:      callq  0x7f4b95d47b15
-0x7f4b64c52879:      jmp    0x7f4b64c5287c
-0x7f4b64c5287b:      callq  0x7f4b5c39eabb
-0x7f4b64c52880:      jmp    0x7f4b64c52883
-0x7f4b64c52882:      callq  0x7f4ae61dc5e1
-0x7f4b64c52887:      (bad)  
-0x7f4b64c52888:      rolb   %cl,(%rax,%rax,1)
-0x7f4b64c5288b:      add    %cl,-0x7c0f8b8e(%rcx)
-0x7f4b64c52891:      rex.R and $0xc0,%al
-0x7f4b64c52894:      add    %cl,-0x46(%rax)
-0x7f4b64c52897:      (bad)  
-0x7f4b64c52898:      fmul   %st(7),%st
-0x7f4b64c5289a:      xor    0x7f(%rbx),%ecx</textarea></div>
+(gdb) print/x task-&gt;_comp_level</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129bcc989613802189-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129bcc989613802189-1">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">print</span>/<span class="crayon-i">x</span><span class="crayon-h"> </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_comp_level</span>
+</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p>&nbsp;</p>
+<p><strong>Method blob size</strong></p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc98a459995208" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+(gdb) print task-&gt;_code_handle-&gt;_nm-&gt;_size</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129bcc98a459995208-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129bcc98a459995208-1">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">print </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_code_handle</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_nm</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_size</span>
+</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p>&nbsp;</p>
+<p><strong>Method&#8217;s first instruction</strong></p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc98b928942212" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+(gdb) x/1i task-&gt;_code_handle-&gt;_nm-&gt;_entry_point</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129bcc98b928942212-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129bcc98b928942212-1">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">x</span>/<span class="crayon-cn">1i</span><span class="crayon-h"> </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_code_handle</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_nm</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_entry_point</span>
+</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p>Note: <em>blob size</em> can be used as an overestimate for the number of instructions in the method -in the worst case scenario, each instruction would take 1 byte-.</p>
+<p>It&#8217;s now possible to set a breakpoint at the beginning of the method:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc98c009744516" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+(gdb) break *(task-&gt;_code_handle-&gt;_nm-&gt;_entry_point)</textarea></div>
+			<div class="crayon-main">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67ab129bcc98c009744516-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67ab129bcc98c009744516-1">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-st">break</span><span class="crayon-h"> </span>*<span class="crayon-sy">(</span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_code_handle</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_nm</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_entry_point</span><span class="crayon-sy">)</span>
+</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p>&nbsp;</p>
+<p><strong>Bonus</strong></p>
+<p>Dump the JIT compiled method to a file:</p>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-67ab129bcc98d450294340" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
+<div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div>
+<div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div>
+</div>
+</div>
+			<div class="crayon-info" style="min-height: 22.4px !important; line-height: 22.4px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 16px !important; line-height: 20px !important;">
+(gdb) set pagination off
+(gdb) set logging file &lt;path/to/file&gt;
+(gdb) set logging overwrite on
+(gdb) set logging on
+(gdb) x/&lt;SIZE&gt;i task-&gt;_code_handle-&gt;_nm-&gt;_entry_point
+(gdb) set logging off</textarea></div>
 			<div class="crayon-main">
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4244515239300-2">2</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4244515239300-4">4</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4244515239300-6">6</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4244515239300-8">8</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4244515239300-10">10</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4244515239300-12">12</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4244515239300-14">14</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-15">15</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129ba4244515239300-16">16</div>
-<div class="crayon-num" data-line="crayon-67ab129ba4244515239300-17">17</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc98d450294340-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc98d450294340-2">2</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc98d450294340-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc98d450294340-4">4</div>
+<div class="crayon-num" data-line="crayon-67ab129bcc98d450294340-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67ab129bcc98d450294340-6">6</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-1">
-<span class="crayon-cn">0x7f4b64c52865</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">push</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-sy">%</span><span class="crayon-i">rax</span>
+<div class="crayon-line" id="crayon-67ab129bcc98d450294340-1">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">pagination </span><span class="crayon-e">off</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4244515239300-2">
-<span class="crayon-cn">0x7f4b64c52866</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">lea</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x5</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rip</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">rax</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-p"># 0x7f4b64c52872</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc98d450294340-2">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">logging </span><span class="crayon-i">file</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">path</span>/<span class="crayon-st">to</span>/<span class="crayon-i">file</span><span class="crayon-h">&gt;</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-3">
-<span class="crayon-cn">0x7f4b64c5286d</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e ">jmpq&nbsp;&nbsp; *</span><span class="crayon-sy">%</span><span class="crayon-i">rax</span>
+<div class="crayon-line" id="crayon-67ab129bcc98d450294340-3">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">logging </span><span class="crayon-e">overwrite </span><span class="crayon-e">on</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4244515239300-4">
-<span class="crayon-cn">0x7f4b64c5286f</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">callq</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x7f4b66b0d32f</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc98d450294340-4">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">logging </span><span class="crayon-e">on</span>
 </div>
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-5">
-<span class="crayon-cn">0x7f4b64c52874</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">callq</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x7f4b95d47b15</span>
+<div class="crayon-line" id="crayon-67ab129bcc98d450294340-5">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">x</span>/<span class="crayon-h">&lt;</span><span class="crayon-i">SIZE</span><span class="crayon-h">&gt;</span><span class="crayon-i">i</span><span class="crayon-h"> </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_code_handle</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_nm</span>-<span class="crayon-h">&gt;</span><span class="crayon-e">_entry_point</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4244515239300-6">
-<span class="crayon-cn">0x7f4b64c52879</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">jmp</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x7f4b64c5287c</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-7">
-<span class="crayon-cn">0x7f4b64c5287b</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">callq</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x7f4b5c39eabb</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4244515239300-8">
-<span class="crayon-cn">0x7f4b64c52880</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">jmp</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x7f4b64c52883</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-9">
-<span class="crayon-cn">0x7f4b64c52882</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">callq</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x7f4ae61dc5e1</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4244515239300-10">
-<span class="crayon-cn">0x7f4b64c52887</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">(</span><span class="crayon-i">bad</span><span class="crayon-sy">)</span><span class="crayon-h">&nbsp;&nbsp;</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-11">
-<span class="crayon-cn">0x7f4b64c52888</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">rolb</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-sy">%</span><span class="crayon-i">cl</span><span class="crayon-sy">,</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rax</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">rax</span><span class="crayon-sy">,</span><span class="crayon-cn">1</span><span class="crayon-sy">)</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4244515239300-12">
-<span class="crayon-cn">0x7f4b64c5288b</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">add</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">%</span><span class="crayon-i">cl</span><span class="crayon-sy">,</span>-<span class="crayon-cn">0x7c0f8b8e</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rcx</span><span class="crayon-sy">)</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-13">
-<span class="crayon-cn">0x7f4b64c52891</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">rex</span><span class="crayon-sy">.</span><span class="crayon-i">R</span><span class="crayon-h"> </span><span class="crayon-st">and</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-cn">0xc0</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">al</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4244515239300-14">
-<span class="crayon-cn">0x7f4b64c52894</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">add</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">%</span><span class="crayon-i">cl</span><span class="crayon-sy">,</span>-<span class="crayon-cn">0x46</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rax</span><span class="crayon-sy">)</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-15">
-<span class="crayon-cn">0x7f4b64c52897</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">(</span><span class="crayon-i">bad</span><span class="crayon-sy">)</span><span class="crayon-h">&nbsp;&nbsp;</span>
-</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ab129ba4244515239300-16">
-<span class="crayon-cn">0x7f4b64c52898</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">fmul</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-sy">%</span><span class="crayon-e">st</span><span class="crayon-sy">(</span><span class="crayon-cn">7</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">st</span>
-</div>
-<div class="crayon-line" id="crayon-67ab129ba4244515239300-17">
-<span class="crayon-cn">0x7f4b64c5289a</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">xor</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x7f</span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">rbx</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-sy">%</span><span class="crayon-i">ecx</span>
+<div class="crayon-line crayon-striped-line" id="crayon-67ab129bcc98d450294340-6">
+<span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">logging </span><span class="crayon-i">off</span>
 </div>
 </div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0007 seconds] -->
-<p><a href="https://martin.uy/hosting/blog/c1_noise_x86_jdk.diff">Download patch here</a> (based on <a href="https://hg.openjdk.java.net/jdk/jdk/rev/89111a0e6355">JDK rev 89111a0e6355</a>).</p>
+<!-- [Format Time: 0.0003 seconds] -->
+<p></p>
 	</div>
 <!-- .entry-content -->
 
@@ -767,15 +911,63 @@ tryAgain:
 
 <div id="comments" class="comments-area">
 
-	
+			<h2 class="comments-title">
+			2 Replies to &ldquo;How to debug JIT compiled methods in OpenJDK JVM?&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-478" class="comment even thread-even depth-1">
+			<article id="div-comment-478" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">labile</b> <span class="says">says:</span>					</div>
+<!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="./index.html#comment-478"><time datetime="2019-05-29T16:12:30+00:00">May 29, 2019 at 4:12 pm</time></a>					</div>
+<!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Good article.</p>
+				</div>
+<!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="./index.html?replytocom=478#respond" data-commentid="478" data-postid="79" data-belowelement="div-comment-478" data-respondelement="respond" data-replyto="Reply to labile" aria-label="Reply to labile"><svg class="icon icon-mail-reply" aria-hidden="true" role="img"> <use href="#icon-mail-reply" xlink:href="#icon-mail-reply"></use> </svg>Reply</a></div>			</article><!-- .comment-body -->
+		</li>
+<!-- #comment-## -->
+		<li id="comment-1719" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-1719" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+												<b class="fn">Corey Ashford</b> <span class="says">says:</span>					</div>
+<!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="./index.html#comment-1719"><time datetime="2021-05-05T17:03:04+00:00">May 5, 2021 at 5:03 pm</time></a>					</div>
+<!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>_nm-&gt;_entry_point doesn&#8217;t exist upstream anymore.  There&#8217;s _nm-&gt;_code_begin, but I&#8217;m not clear it&#8217;s equivalent</p>
+				</div>
+<!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="./index.html?replytocom=1719#respond" data-commentid="1719" data-postid="79" data-belowelement="div-comment-1719" data-respondelement="respond" data-replyto="Reply to Corey Ashford" aria-label="Reply to Corey Ashford"><svg class="icon icon-mail-reply" aria-hidden="true" role="img"> <use href="#icon-mail-reply" xlink:href="#icon-mail-reply"></use> </svg>Reply</a></div>			</article><!-- .comment-body -->
+		</li>
+<!-- #comment-## -->
+		</ol>
+
+		
 </div>
 <!-- #comments -->
 
 	<nav class="navigation post-navigation" aria-label="Posts">
 		<h2 class="screen-reader-text">Post navigation</h2>
 		<div class="nav-links">
-<div class="nav-previous"><a href="./../simple-patching-tool-v1-0-openjdk/index.html" rel="prev"><span class="screen-reader-text">Previous Post</span><span aria-hidden="true" class="nav-subtitle">Previous</span> <span class="nav-title"><span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-left" aria-hidden="true" role="img"> <use href="#icon-arrow-left" xlink:href="#icon-arrow-left"></use> </svg></span>Simple Patching Tool v1.0 (OpenJDK)</span></a></div>
-<div class="nav-next"><a href="./../rpms-for-devs/index.html" rel="next"><span class="screen-reader-text">Next Post</span><span aria-hidden="true" class="nav-subtitle">Next</span> <span class="nav-title">RPMs for Devs<span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-right" aria-hidden="true" role="img"> <use href="#icon-arrow-right" xlink:href="#icon-arrow-right"></use> </svg></span></span></a></div>
+<div class="nav-previous"><a href="./../debugging-hotspot-openjdk-jvm-x86_64-interpreter-in-linux/index.html" rel="prev"><span class="screen-reader-text">Previous Post</span><span aria-hidden="true" class="nav-subtitle">Previous</span> <span class="nav-title"><span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-left" aria-hidden="true" role="img"> <use href="#icon-arrow-left" xlink:href="#icon-arrow-left"></use> </svg></span>Debugging the OpenJDK JVM interpreter in Linux x86_64</span></a></div>
+<div class="nav-next"><a href="./../simple-patching-tool-v1-0-openjdk/index.html" rel="next"><span class="screen-reader-text">Next Post</span><span aria-hidden="true" class="nav-subtitle">Next</span> <span class="nav-title">Simple Patching Tool v1.0 (OpenJDK)<span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-right" aria-hidden="true" role="img"> <use href="#icon-arrow-right" xlink:href="#icon-arrow-right"></use> </svg></span></span></a></div>
 </div>
 	</nav>
 		</main><!-- #main -->
@@ -827,10 +1019,10 @@ tryAgain:
 			</section><section id="search-2" class="widget widget_search">
 
 <form role="search" method="get" class="search-form" action=".//">
-	<label for="search-form-67ab129ba85b9">
+	<label for="search-form-67ab129bd3189">
 		<span class="screen-reader-text">Search for:</span>
 	</label>
-	<input type="search" id="search-form-67ab129ba85b9" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<input type="search" id="search-form-67ab129bd3189" class="search-field" placeholder="Search &hellip;" value="" name="s">
 	<button type="submit" class="search-submit"><svg class="icon icon-search" aria-hidden="true" role="img"> <use href="#icon-search" xlink:href="#icon-search"></use> </svg><span class="screen-reader-text">Search</span></button>
 </form>
 </section></aside><!-- #secondary -->
