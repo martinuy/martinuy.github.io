@@ -1,0 +1,151 @@
+/*
+ Yellow: ff6600
+*/
+
+html {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	border: 0px solid blue;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	border: 0px solid blue;
+	height: 100%;
+	display: block;
+    font-family: sans-serif;
+	/*font-family: martinuySansFont;*/
+}
+
+#main_logo_container {
+    top: 5%;
+    width: 100%;
+    border: 0px solid yellow;
+    text-align: center;
+    display: block;
+    position: relative;
+}
+
+#main_logo {
+	width: 250px;
+	height: 71px;
+	background-image: url("../images/main_logo.png");
+	display: inline-block;
+}
+
+#menu_container {
+    width: 100%;
+    top: 10%;
+    display: block;
+    border: 0px solid black;
+    text-align: center;
+    position: relative;
+    vertical-align: middle;
+}
+
+.main_button {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: #424242;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    display: inline-block;
+ 	vertical-align: middle;
+    border: 0px solid black;
+}
+
+.main_button:hover {
+    cursor:pointer;
+    font-weight: bold;
+    border-width: 0px;
+    background-color: #ff0696;
+    color: #ffffff;
+}
+
+.main_button_separator {
+    width: 100%;
+    display: inline-block;
+ 	vertical-align: middle;
+    border-bottom: 1px dashed #828282;
+}
+
+#footer_container {
+    width: 100%;
+    top: 20%;
+    display: block;
+    border: 0px solid black;
+    text-align: center;
+    position: relative;
+}
+
+#footer_text {
+    color: #828282;
+    display: inline-block;
+}
+
+@media only screen and (min-width: 48em) {
+    #main_logo_container {
+	    top: 30%;
+    }
+
+    #menu_container {
+	    top: 50%;
+    }
+
+    .main_button {
+	    width: 150px;
+	    font-size: 20px;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+    }
+
+    .main_button_separator {
+	    width: 3px;
+	    margin-right: 3px;
+	    height: 25px;
+        border: 0;
+	    border-right: 1px dashed #828282;
+    }
+
+    #footer_container {
+	    top: 70%;
+	    bottom: 0px;
+	    position: relative;
+    }
+
+    #footer_text {
+	    font-size: 12px;
+    }
+
+    .logo_font_footer {
+	    font-size: 14px;
+    }
+}
+
+.logo_font {
+    font-family: sans-serif;
+	/* font-family: martinuyPlanestyleFont; */
+}
+
+.highlight_color {
+	color: #ff0696;
+}
+
+@font-face {
+    font-family: martinuySansFont;
+    src: url("../resources/FreeSans.ttf");
+}
+
+@font-face {
+    font-family: martinuySansFont;
+	font-weight: bold;
+    src: url("../resources/FreeSansBold.ttf");
+}
+
+@font-face {
+    font-family: martinuyPlanestyleFont;
+    src: url("../resources/planestyle.ttf");
+}
