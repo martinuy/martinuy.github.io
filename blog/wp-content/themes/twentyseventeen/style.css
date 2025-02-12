@@ -1550,6 +1550,7 @@ body {
 
 .site-branding {
 	padding: 1em 0;
+    margin-top: 0.7em;
 	position: relative;
 	z-index: 3;
 }
@@ -3243,6 +3244,7 @@ object {
 
 	.site-branding {
 		padding: 3em 0;
+		padding-bottom: 1.3em;
 	}
 
 	/* Front Page */
