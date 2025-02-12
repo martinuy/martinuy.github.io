@@ -1,0 +1,37 @@
+diff --git a/libxtables/xtoptions.c b/libxtables/xtoptions.c
+index d26d2f8..df93424 100644
+--- a/libxtables/xtoptions.c
++++ b/libxtables/xtoptions.c
+@@ -788,14 +788,28 @@ static void xtopt_parse_ethermac(struct xt_option_call *cb)
+ 	char *end;
+ 
+ 	for (i = 0; i < ARRAY_SIZE(cb->val.ethermac) - 1; ++i) {
+-		cb->val.ethermac[i] = strtoul(arg, &end, 16);
+-		if (*end != ':' || end - arg > 2)
++		if (*arg != '*') {
++			cb->val.ethermac[i] = strtoul(arg, &end, 16);
++			if (end - arg > 2)
++				goto out;
++		} else {
++			cb->val.ethermac[i] = '*';
++			end = arg + 1;
++		}
++		if (*end != ':')
+ 			goto out;
+ 		arg = end + 1;
+ 	}
+ 	i = ARRAY_SIZE(cb->val.ethermac) - 1;
+-	cb->val.ethermac[i] = strtoul(arg, &end, 16);
+-	if (*end != '\0' || end - arg > 2)
++	if (*arg != '*') {
++		cb->val.ethermac[i] = strtoul(arg, &end, 16);
++		if (end - arg > 2)
++			goto out;
++	} else {
++		cb->val.ethermac[i] = '*';
++		end = arg + 1;
++	}
++	if (*end != '\0')
+ 		goto out;
+ 	if (cb->entry->flags & XTOPT_PUT)
+ 		memcpy(XTOPT_MKPTR(cb), cb->val.ethermac,

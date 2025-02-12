@@ -1,0 +1,156 @@
+diff -r 89111a0e6355 src/hotspot/cpu/x86/assembler_x86.cpp
+--- a/src/hotspot/cpu/x86/assembler_x86.cpp	Mon Jan 22 20:31:19 2018 +0530
++++ b/src/hotspot/cpu/x86/assembler_x86.cpp	Sat Feb 10 17:54:28 2018 -0300
+@@ -2972,6 +2972,64 @@
+   emit_int8((unsigned char)(0xD8 | encode));
+ }
+ 
++void Assembler::noise() {
++	Label tryAgain;
++
++	push(rax);
++
++	// Anti-disassembler code
++
++	// lea rax, qword ptr [rip+0x5]
++	emit_int8((unsigned char)0x48);
++	emit_int8((unsigned char)0x8D);
++	emit_int8((unsigned char)0x05);
++	emit_int8((unsigned char)0x05);
++	emit_int8((unsigned char)0x00);
++	emit_int8((unsigned char)0x00);
++	emit_int8((unsigned char)0x00);
++
++	// jmp rax
++	emit_int8((unsigned char)0xFF);
++	emit_int8((unsigned char)0xE0);
++
++	// call 0x00EBAABB + jmp short 0x3 (unaligned jump)
++	emit_int8((unsigned char)0xE8);
++	emit_int8((unsigned char)0xBB);
++	emit_int8((unsigned char)0xAA);
++	emit_int8((unsigned char)0xEB);
++	emit_int8((unsigned char)0x01);
++
++	// Garbage to deceive the disassembler and make
++	// him think that this is a call
++	emit_int8((unsigned char)0xE8);
++
++	pushf();
++	push(rdx);
++	bind(tryAgain);
++	rdtsc();
++
++	// jmp short 0x3 (unaligned jump)
++	emit_int8((unsigned char)0xEB);
++	emit_int8((unsigned char)0x01);
++	// Garbage to deceive the disassembler and make
++	// him think that this is a call
++	emit_int8((unsigned char)0xE8);
++
++	cmpl(rax, rdx);
++	jcc(Assembler::equal, tryAgain);
++
++	// jmp short 0x3 (unaligned jump)
++	emit_int8((unsigned char)0xEB);
++	emit_int8((unsigned char)0x01);
++	// Garbage to deceive the disassembler and make
++	// him think that this is a call
++	emit_int8((unsigned char)0xE8);
++
++	pop(rdx);
++	popf();
++	pop(rax);
++}
++
+ void Assembler::nop(int i) {
+ #ifdef ASSERT
+   assert(i > 0, " ");
+diff -r 89111a0e6355 src/hotspot/cpu/x86/assembler_x86.hpp
+--- a/src/hotspot/cpu/x86/assembler_x86.hpp	Mon Jan 22 20:31:19 2018 +0530
++++ b/src/hotspot/cpu/x86/assembler_x86.hpp	Sat Feb 10 17:54:28 2018 -0300
+@@ -1523,6 +1523,7 @@
+ #endif
+ 
+   void nop(int i = 1);
++  void noise();
+ 
+   void notl(Register dst);
+ 
+diff -r 89111a0e6355 src/hotspot/cpu/x86/c1_LIRGenerator_x86.cpp
+--- a/src/hotspot/cpu/x86/c1_LIRGenerator_x86.cpp	Mon Jan 22 20:31:19 2018 +0530
++++ b/src/hotspot/cpu/x86/c1_LIRGenerator_x86.cpp	Sat Feb 10 17:54:28 2018 -0300
+@@ -626,6 +626,9 @@
+ 
+       arithmetic_op_int(x->op(), x->operand(), left_arg->result(), right_arg->result(), tmp);
+     } else {
++
++      __ noise();
++
+       right_arg->dont_load_item();
+       rlock_result(x);
+       LIR_Opr tmp = LIR_OprFact::illegalOpr;
+diff -r 89111a0e6355 src/hotspot/share/c1/c1_LIR.cpp
+--- a/src/hotspot/share/c1/c1_LIR.cpp	Mon Jan 22 20:31:19 2018 +0530
++++ b/src/hotspot/share/c1/c1_LIR.cpp	Sat Feb 10 17:54:28 2018 -0300
+@@ -443,6 +443,7 @@
+     }
+ 
+     case lir_nop:                      // may have info, result always invalid
++    case lir_noise:                    // may have info, result always invalid
+     case lir_std_entry:                // may have result, info always invalid
+     case lir_osr_entry:                // may have result, info always invalid
+     case lir_get_thread:               // may have result, info always invalid
+@@ -1640,6 +1641,7 @@
+      case lir_word_align:            s = "word_align";    break;
+      case lir_label:                 s = "label";         break;
+      case lir_nop:                   s = "nop";           break;
++     case lir_noise:                 s = "noise";         break;
+      case lir_on_spin_wait:          s = "on_spin_wait";  break;
+      case lir_backwardbranch_target: s = "backbranch";    break;
+      case lir_std_entry:             s = "std_entry";     break;
+diff -r 89111a0e6355 src/hotspot/share/c1/c1_LIR.hpp
+--- a/src/hotspot/share/c1/c1_LIR.hpp	Mon Jan 22 20:31:19 2018 +0530
++++ b/src/hotspot/share/c1/c1_LIR.hpp	Sat Feb 10 17:54:28 2018 -0300
+@@ -901,6 +901,7 @@
+       , lir_membar_storeload
+       , lir_get_thread
+       , lir_on_spin_wait
++      , lir_noise
+   , end_op0
+   , begin_op1
+       , lir_fxch
+@@ -2063,6 +2064,7 @@
+   void membar_storeload()                        { append(new LIR_Op0(lir_membar_storeload)); }
+ 
+   void nop()                                     { append(new LIR_Op0(lir_nop)); }
++  void noise()                                   { append(new LIR_Op0(lir_noise)); }
+   void build_frame()                             { append(new LIR_Op0(lir_build_frame)); }
+ 
+   void std_entry(LIR_Opr receiver)               { append(new LIR_Op0(lir_std_entry, receiver)); }
+diff -r 89111a0e6355 src/hotspot/share/c1/c1_LIRAssembler.cpp
+--- a/src/hotspot/share/c1/c1_LIRAssembler.cpp	Mon Jan 22 20:31:19 2018 +0530
++++ b/src/hotspot/share/c1/c1_LIRAssembler.cpp	Sat Feb 10 17:54:28 2018 -0300
+@@ -604,6 +604,11 @@
+       _masm->nop();
+       break;
+ 
++    case lir_noise:
++      assert(op->info() == NULL, "not supported");
++      _masm->noise();
++      break;
++
+     case lir_label:
+       Unimplemented();
+       break;
+diff -r 89111a0e6355 src/hotspot/share/c1/c1_LinearScan.cpp
+--- a/src/hotspot/share/c1/c1_LinearScan.cpp	Mon Jan 22 20:31:19 2018 +0530
++++ b/src/hotspot/share/c1/c1_LinearScan.cpp	Sat Feb 10 17:54:28 2018 -0300
+@@ -6679,6 +6679,7 @@
+         case lir_fld:             inc_counter(counter_fpu_stack); break;
+ 
+         case lir_nop:
++        case lir_noise:
+         case lir_push:
+         case lir_pop:
+         case lir_convert:

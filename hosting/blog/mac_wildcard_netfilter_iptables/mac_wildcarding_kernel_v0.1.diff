@@ -1,0 +1,31 @@
+--- a/net/netfilter/xt_mac.c
++++ b/net/netfilter/xt_mac.c
+@@ -29,6 +29,9 @@ static bool mac_mt(const struct sk_buff *skb, struct xt_action_param *par)
+ {
+ 	const struct xt_mac_info *info = par->matchinfo;
+ 	bool ret;
++    int i;
++    u8 h_source_tmp[6];
++    u8 srcaddr_tmp[6];
+ 
+ 	if (skb->dev == NULL || skb->dev->type != ARPHRD_ETHER)
+ 		return false;
+@@ -36,7 +39,17 @@ static bool mac_mt(const struct sk_buff *skb, struct xt_action_param *par)
+ 		return false;
+ 	if (skb_mac_header(skb) + ETH_HLEN > skb->data)
+ 		return false;
+-	ret  = ether_addr_equal(eth_hdr(skb)->h_source, info->srcaddr);
++    
++    for (i = 0; i < 6; i++) {
++		if (info->srcaddr[i] == '*') {
++			h_source_tmp[i] = 0;
++			srcaddr_tmp[i] = 0;
++		} else {
++			h_source_tmp[i] = eth_hdr(skb)->h_source[i];
++			srcaddr_tmp[i] = info->srcaddr[i];
++		}
++    }
++	ret  = ether_addr_equal(h_source_tmp, srcaddr_tmp);
+ 	ret ^= info->invert;
+ 	return ret;
+ }

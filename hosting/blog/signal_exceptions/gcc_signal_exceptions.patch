@@ -1,0 +1,585 @@
+diff --git a/gcc/builtins.def b/gcc/builtins.def
+index 449d08d..be85378 100644
+--- a/gcc/builtins.def
++++ b/gcc/builtins.def
+@@ -1027,6 +1027,7 @@ DEF_BUILTIN_STUB (BUILT_IN_CXA_END_CLEANUP, "__builtin_cxa_end_cleanup")
+ DEF_BUILTIN_STUB (BUILT_IN_EH_POINTER, "__builtin_eh_pointer")
+ DEF_BUILTIN_STUB (BUILT_IN_EH_FILTER, "__builtin_eh_filter")
+ DEF_BUILTIN_STUB (BUILT_IN_EH_COPY_VALUES, "__builtin_eh_copy_values")
++DEF_BUILTIN_STUB (BUILT_IN_REGISTER_SIGNAL_EXCEPTIONS, "__builtin_register_signal_exceptions")
+ 
+ /* __FILE__, __LINE__, __FUNCTION__ as builtins.  */
+ DEF_GCC_BUILTIN (BUILT_IN_FILE, "FILE", BT_FN_CONST_STRING, ATTR_NOTHROW_LEAF_LIST)
+diff --git a/gcc/c-family/c-common.c b/gcc/c-family/c-common.c
+index 859eeb4..abca9d5 100644
+--- a/gcc/c-family/c-common.c
++++ b/gcc/c-family/c-common.c
+@@ -378,6 +378,7 @@ const struct c_common_resword c_common_reswords[] =
+   { "__builtin_offsetof", RID_OFFSETOF, 0 },
+   { "__builtin_types_compatible_p", RID_TYPES_COMPATIBLE_P, D_CONLY },
+   { "__builtin_va_arg",	RID_VA_ARG,	0 },
++  { "__catch",      RID_CATCH, D_CONLY | D_EXT },
+   { "__complex",	RID_COMPLEX,	0 },
+   { "__complex__",	RID_COMPLEX,	0 },
+   { "__const",		RID_CONST,	0 },
+@@ -429,6 +430,7 @@ const struct c_common_resword c_common_reswords[] =
+   { "__transaction_atomic", RID_TRANSACTION_ATOMIC, 0 },
+   { "__transaction_relaxed", RID_TRANSACTION_RELAXED, 0 },
+   { "__transaction_cancel", RID_TRANSACTION_CANCEL, 0 },
++  { "__try",        RID_TRY, D_CONLY | D_EXT },
+   { "__typeof",		RID_TYPEOF,	0 },
+   { "__typeof__",	RID_TYPEOF,	0 },
+   { "__underlying_type", RID_UNDERLYING_TYPE, D_CXXONLY },
+diff --git a/gcc/c/c-parser.c b/gcc/c/c-parser.c
+index 6b41a61..dc01355 100644
+--- a/gcc/c/c-parser.c
++++ b/gcc/c/c-parser.c
+@@ -1409,6 +1409,7 @@ static void c_parser_switch_statement (c_parser *, bool *);
+ static void c_parser_while_statement (c_parser *, bool, unsigned short, bool *);
+ static void c_parser_do_statement (c_parser *, bool, unsigned short);
+ static void c_parser_for_statement (c_parser *, bool, unsigned short, bool *);
++static void c_parser_try_statement (c_parser *);
+ static tree c_parser_asm_statement (c_parser *);
+ static tree c_parser_asm_operands (c_parser *);
+ static tree c_parser_asm_goto_operands (c_parser *);
+@@ -5410,6 +5411,9 @@ c_parser_statement_after_labels (c_parser *parser, bool *if_p,
+ 	case RID_FOR:
+ 	  c_parser_for_statement (parser, false, 0, if_p);
+ 	  break;
++	case RID_TRY:
++	  c_parser_try_statement (parser);
++	  break;
+ 	case RID_GOTO:
+ 	  c_parser_consume_token (parser);
+ 	  if (c_parser_next_token_is (parser, CPP_NAME))
+@@ -6260,6 +6264,36 @@ c_parser_for_statement (c_parser *parser, bool ivdep, unsigned short unroll,
+   c_cont_label = save_cont;
+ }
+ 
++/* Parse a __try statement (Signal Exceptions extension)
++
++   try-statement:
++     __try compound-statement __catch compound-statement
++*/
++
++static void
++c_parser_try_statement (c_parser *parser)
++{
++  tree try_catch_block, try_block, catch_block;
++
++  if (!flag_signal_exceptions)
++    {
++      c_parser_error (parser, "Signal Exceptions extension disabled (enable with -fsignal-exceptions)");
++      return;
++    }
++
++  gcc_assert (c_parser_next_token_is_keyword (parser, RID_TRY));
++  c_parser_consume_token (parser);
++
++  try_block = c_parser_compound_statement (parser);
++
++  c_parser_require_keyword (parser, RID_CATCH, "expected %<__catch%>");
++
++  catch_block = build2 (CATCH_EXPR, void_type_node, NULL_TREE, c_parser_compound_statement (parser));
++  try_catch_block = build2 (TRY_CATCH_EXPR, void_type_node, try_block, catch_block);
++  add_stmt (try_catch_block);
++  return;
++}
++
+ /* Parse an asm statement, a GNU extension.  This is a full-blown asm
+    statement with inputs, outputs, clobbers, and volatile tag
+    allowed.
+diff --git a/gcc/common.opt b/gcc/common.opt
+index 13ab5c6..52367dd 100644
+--- a/gcc/common.opt
++++ b/gcc/common.opt
+@@ -2318,6 +2318,10 @@ fshrink-wrap-separate
+ Common Report Var(flag_shrink_wrap_separate) Init(1) Optimization
+ Shrink-wrap parts of the prologue and epilogue separately.
+ 
++fsignal-exceptions
++Common Report Var(flag_signal_exceptions)
++Enable support signal exceptions extension.
++
+ fsignaling-nans
+ Common Report Var(flag_signaling_nans) Optimization SetByCombined
+ Disable optimizations observable by IEEE signaling NaNs.
+diff --git a/gcc/except.c b/gcc/except.c
+index ba42bf6..151814c 100644
+--- a/gcc/except.c
++++ b/gcc/except.c
+@@ -3203,6 +3203,14 @@ output_function_exception_table (int section)
+ 	targetm.asm_out.emit_except_personality (personality);
+     }
+ 
++  if (flag_signal_exceptions &&
++          cgraph_node::get (get_init_signal_exceptions()) == NULL)
++    {
++      opt_pass *saved_current_pass = current_pass;
++      cgraph_node::add_new_function (get_init_signal_exceptions(), false);
++      current_pass = saved_current_pass;
++    }
++
+   switch_to_exception_section (fnname);
+ 
+   /* If the target wants a label to begin the table, emit it here.  */
+diff --git a/gcc/rtlanal.c b/gcc/rtlanal.c
+index ac3662d..e737eb6 100644
+--- a/gcc/rtlanal.c
++++ b/gcc/rtlanal.c
+@@ -2885,6 +2885,9 @@ may_trap_p_1 (const_rtx x, unsigned flags)
+       /* These operations don't trap even with floating point.  */
+       break;
+ 
++    case CLOBBER:
++      if (flag_signal_exceptions)
++        return 0;
+     default:
+       /* Any floating arithmetic may trap.  */
+       if (SCALAR_FLOAT_MODE_P (GET_MODE (x)) && flag_trapping_math)
+diff --git a/gcc/testsuite/gcc.dg/signal-exceptions.c b/gcc/testsuite/gcc.dg/signal-exceptions.c
+new file mode 100644
+index 0000000..580bd86
+--- /dev/null
++++ b/gcc/testsuite/gcc.dg/signal-exceptions.c
+@@ -0,0 +1,88 @@
++/* { dg-do run { target x86_64-*-* } } */
++/* { dg-options "-fsignal-exceptions" } */
++
++static int
++memory_access ()
++{
++    long b = 0;
++    __try
++      {
++        b = *(long*)b;
++        return -1;
++      }
++    __catch
++      {
++        return 0;
++      }
++}
++
++static __attribute__((noinline)) void
++call_helper ()
++{
++    long *b = 0;
++    *b = 0;
++}
++
++static int
++call ()
++{
++    __try
++      {
++        call_helper ();
++        return -1;
++      }
++    __catch
++      {
++        return 0;
++      }
++}
++
++static int
++asm_1 ()
++{
++    __try
++      {
++        __asm__ __volatile__ (
++                "xor %%rax, %%rax\n"
++                "mov %%rax, (%%rax)\n"
++                : : : "rax"
++                );
++        return -1;
++      }
++    __catch
++      {
++        return 0;
++      }
++}
++
++static int
++asm_2 ()
++{
++    __try
++      {
++        __asm__ __volatile__ (
++                "xor %%rax, %%rax\n"
++                : : : "rax"
++                );
++        return 0;
++      }
++    __catch
++      {
++        return -1;
++      }
++}
++
++static int(*tests_array[])(void) =
++{
++    memory_access, call, asm_1, asm_2
++};
++
++int
++main ()
++{
++    int i;
++    for (i = 0; i < sizeof(tests_array)/sizeof(tests_array[0]); i++)
++        if (tests_array[i]() != 0) return -1;
++    return 0;
++}
++
+diff --git a/gcc/toplev.c b/gcc/toplev.c
+index b066bcc..88458b9 100644
+--- a/gcc/toplev.c
++++ b/gcc/toplev.c
+@@ -1382,6 +1382,12 @@ process_options (void)
+   if (flag_rename_registers == AUTODETECT_VALUE)
+     flag_rename_registers = flag_unroll_loops;
+ 
++  if (flag_signal_exceptions)
++    {
++      flag_exceptions = 1;
++      flag_non_call_exceptions = 1;
++    }
++
+   if (flag_non_call_exceptions)
+     flag_asynchronous_unwind_tables = 1;
+   if (flag_asynchronous_unwind_tables)
+diff --git a/gcc/tree-cfg.c b/gcc/tree-cfg.c
+index 68f4fd3..442c498 100644
+--- a/gcc/tree-cfg.c
++++ b/gcc/tree-cfg.c
+@@ -958,6 +958,8 @@ make_edges_bb (basic_block bb, struct omp_region **pcur_region, int *pomp_index)
+ 
+     case GIMPLE_ASM:
+       make_gimple_asm_edges (bb);
++      if (flag_signal_exceptions && is_ctrl_altering_stmt (last))
++        make_eh_edges (last);
+       fallthru = true;
+       break;
+ 
+diff --git a/gcc/tree-eh.c b/gcc/tree-eh.c
+index 30c6d9e..6b5b20e 100644
+--- a/gcc/tree-eh.c
++++ b/gcc/tree-eh.c
+@@ -2115,6 +2115,14 @@ lower_eh_constructs_2 (struct leh_state *state, gimple_stmt_iterator *gsi)
+       /* We should be eliminating this in lower_try_finally et al.  */
+       gcc_unreachable ();
+ 
++    case GIMPLE_ASM:
++        if (flag_signal_exceptions && state->cur_region &&
++                stmt_could_throw_p (stmt))
++          {
++            record_stmt_eh_region (state->cur_region, stmt);
++            note_eh_region_may_contain_throw (state->cur_region);
++          }
++        break;
+     default:
+       /* A type, a decl, or some kind of statement that we're not
+ 	 interested in.  Don't walk them.  */
+@@ -2636,6 +2644,8 @@ tree_could_trap_p (tree expr)
+       return !range_in_array_bounds_p (expr);
+ 
+     case ARRAY_REF:
++      if (flag_signal_exceptions)
++        return !in_array_bounds_p (expr);
+       base = TREE_OPERAND (expr, 0);
+       if (tree_could_trap_p (base))
+ 	return true;
+@@ -2645,6 +2655,8 @@ tree_could_trap_p (tree expr)
+ 
+     case TARGET_MEM_REF:
+     case MEM_REF:
++      if (flag_signal_exceptions)
++        return true;
+       if (TREE_CODE (TREE_OPERAND (expr, 0)) == ADDR_EXPR
+ 	  && tree_could_trap_p (TREE_OPERAND (TREE_OPERAND (expr, 0), 0)))
+ 	return true;
+@@ -2675,6 +2687,8 @@ tree_could_trap_p (tree expr)
+       return true;
+ 
+     case INDIRECT_REF:
++      if (flag_signal_exceptions)
++        return true;
+       return !TREE_THIS_NOTRAP (expr);
+ 
+     case ASM_EXPR:
+@@ -2898,6 +2912,8 @@ stmt_could_throw_p (gimple *stmt)
+       return stmt_could_throw_1_p (as_a <gassign *> (stmt));
+ 
+     case GIMPLE_ASM:
++      if (flag_signal_exceptions)
++        return true;
+       if (!cfun->can_throw_non_call_exceptions)
+         return false;
+       return gimple_asm_volatile_p (as_a <gasm *> (stmt));
+diff --git a/gcc/tree.c b/gcc/tree.c
+index e8dc425..ea38bd1 100644
+--- a/gcc/tree.c
++++ b/gcc/tree.c
+@@ -10347,6 +10347,14 @@ build_common_builtin_nodes (void)
+ 			BUILT_IN_EH_COPY_VALUES,
+ 			"__builtin_eh_copy_values", ECF_NOTHROW);
+ 
++  if (flag_signal_exceptions)
++    {
++      ftype = build_function_type_list (void_type_node, NULL_TREE);
++      local_define_builtin ("__builtin_register_signal_exceptions", ftype,
++              BUILT_IN_REGISTER_SIGNAL_EXCEPTIONS,
++              "_register_signal_exceptions", 0);
++    }
++
+   /* Complex multiplication and division.  These are handled as builtins
+      rather than optabs because emit_library_call_value doesn't support
+      complex.  Further, we can do slightly better with folding these
+@@ -12275,6 +12283,62 @@ lhd_gcc_personality (void)
+   return gcc_eh_personality_decl;
+ }
+ 
++static GTY(()) tree init_signal_exceptions_decl;
++
++tree
++get_init_signal_exceptions (void)
++{
++  if (flag_signal_exceptions && !init_signal_exceptions_decl)
++    {
++      /* function */
++      tree fid = get_identifier ("__init_signal_exceptions");
++      tree ftype = build_function_type (void_type_node, void_list_node);
++      tree fdecl = build_decl (UNKNOWN_LOCATION, FUNCTION_DECL, fid, ftype);
++      DECL_ARTIFICIAL (fdecl) = 1;
++      TREE_PUBLIC (fdecl) = 1;
++      TREE_NOTHROW (fdecl) = 1;
++      TREE_USED (fdecl) = 1;
++      TREE_STATIC (fdecl) = 1;
++      DECL_FUNCTION_CODE (fdecl) = BUILT_IN_NONE;
++      DECL_BUILT_IN_CLASS (fdecl) = NOT_BUILT_IN;
++      DECL_NO_INSTRUMENT_FUNCTION_ENTRY_EXIT (fdecl) = 1;
++      DECL_STATIC_CONSTRUCTOR (fdecl) = 1;
++      DECL_VISIBILITY (fdecl) = VISIBILITY_DEFAULT;
++      DECL_WEAK (fdecl) = 1;
++
++      /* function attributes */
++      tree attr_constructor = make_node (TREE_LIST);
++      TREE_PURPOSE (attr_constructor) = get_identifier ("constructor");
++      tree attr_weak = make_node (TREE_LIST);
++      TREE_PURPOSE (attr_weak) = get_identifier ("weak");
++      TREE_CHAIN (attr_weak) = attr_constructor;
++      DECL_ATTRIBUTES (fdecl) = attr_weak;
++
++      /* retval */
++      tree retval = build_decl (UNKNOWN_LOCATION, RESULT_DECL,
++                    NULL_TREE, void_type_node);
++      DECL_ARTIFICIAL (retval) = 1;
++      DECL_IGNORED_P (retval) = 1;
++      DECL_RESULT (fdecl) = retval;
++
++      /* block */
++      tree block = make_node (BLOCK);
++      TREE_USED (block) = 1;
++      BLOCK_SUPERCONTEXT (block) = fdecl;
++      DECL_INITIAL (fdecl) = block;
++
++      /* function body */
++      tree call_expr = build_call_expr (
++              builtin_decl_implicit (BUILT_IN_REGISTER_SIGNAL_EXCEPTIONS), 0);
++      tree bind_expr = build3 (BIND_EXPR, void_type_node, NULL, call_expr, block);
++      DECL_SAVED_TREE (fdecl) = bind_expr;
++
++      gimplify_function_tree (fdecl);
++      init_signal_exceptions_decl = fdecl;
++    }
++  return init_signal_exceptions_decl;
++}
++
+ /* TARGET is a call target of GIMPLE call statement
+    (obtained by gimple_call_fn).  Return true if it is
+    OBJ_TYPE_REF representing an virtual call of C++ method.
+diff --git a/gcc/tree.h b/gcc/tree.h
+index ef8bff4..29ef9fa 100644
+--- a/gcc/tree.h
++++ b/gcc/tree.h
+@@ -4923,6 +4923,8 @@ extern int tree_floor_log2 (const_tree);
+ extern unsigned int tree_ctz (const_tree);
+ extern int simple_cst_equal (const_tree, const_tree);
+ 
++extern tree get_init_signal_exceptions (void);
++
+ namespace inchash
+ {
+ 
+diff --git a/libgcc/config/i386/linux-unwind.h b/libgcc/config/i386/linux-unwind.h
+index ea838e4..7671a25 100644
+--- a/libgcc/config/i386/linux-unwind.h
++++ b/libgcc/config/i386/linux-unwind.h
+@@ -116,6 +116,45 @@ x86_64_fallback_frame_state (struct _Unwind_Context *context,
+   return _URC_NO_REASON;
+ }
+ 
++#define SIGEXCEPT_SIGSEGV_HANDLER x86_64_sigexcept_sigsegv_handler
++
++static void sigexcept_unwind_trampoline (void);
++
++static void
++x86_64_sigexcept_sigsegv_handler (
++        int signal __attribute__ ((__unused__)),
++        siginfo_t* info __attribute__ ((__unused__)),
++        void* context)
++{
++  ucontext_t* ucontext = (ucontext_t*)context;
++
++  /* This method has been called in the context of a signal trap.
++     Execution will continue in sigexcept_unwind_trampoline so
++     the stack can be unwinded and the proper exception handler (if any)
++     be called. Even though it would be possible to jump directly from
++     here, it is preferred to exit the signal trap context by
++     returning from this handler first and passing through the kernel.
++     As a result of doing so, the exception handler code is not restricted
++     to call async-signal-safe functions.
++
++     Before moving to sigexcept_unwind_trampoline, the trap address
++     has to be informed. The context stack is grown to hold a pointer
++     and the trap address + 1 is stored there. In a non-signal-exceptions
++     scenario, an exception is thrown by a call to the runtime. The
++     runtime analyzes the return address pushed to the stack and that
++     is interpreted as the instruction following the trap. To compensate
++     this and get the trap address -or more accurately, the address of
++     its last byte-, the runtime decrements the address by 1 byte.
++     In a signal-exceptions-scenario the same 'calling' logic is emulated
++     so no changes are needed on the runtime side. */
++
++  ucontext->uc_mcontext.gregs[15] -= sizeof(void*);
++  *((unsigned long*)ucontext->uc_mcontext.gregs[15]) =
++          (greg_t)ucontext->uc_mcontext.gregs[16] + 1;
++  ucontext->uc_mcontext.gregs[16] =
++          (greg_t)&sigexcept_unwind_trampoline;
++}
++
+ #else /* ifdef __x86_64__  */
+ 
+ #define MD_FALLBACK_FRAME_STATE_FOR x86_fallback_frame_state
+diff --git a/libgcc/libgcc-std.ver.in b/libgcc/libgcc-std.ver.in
+index 2f19ff7..0214268 100644
+--- a/libgcc/libgcc-std.ver.in
++++ b/libgcc/libgcc-std.ver.in
+@@ -176,6 +176,7 @@ GCC_3.0 {
+   _Unwind_Resume
+   _Unwind_SetGR
+   _Unwind_SetIP
++  _register_signal_exceptions
+   __deregister_frame
+   __deregister_frame_info
+   __deregister_frame_info_bases
+diff --git a/libgcc/unwind-dw2.c b/libgcc/unwind-dw2.c
+index de9310f..e14edbc 100644
+--- a/libgcc/unwind-dw2.c
++++ b/libgcc/unwind-dw2.c
+@@ -37,6 +37,10 @@
+ #include "gthr.h"
+ #include "unwind-dw2.h"
+ 
++#ifndef inhibit_libc
++#include <signal.h>
++#endif /* inhibit_libc */
++
+ #ifdef HAVE_SYS_SDT_H
+ #include <sys/sdt.h>
+ #endif
+@@ -1736,6 +1740,80 @@ uw_identify_context (struct _Unwind_Context *context)
+     return _Unwind_GetCFA (context) + _Unwind_IsSignalFrame (context);
+ }
+ 
++#if (!defined (inhibit_libc) && defined (SIGEXCEPT_SIGSEGV_HANDLER))
++
++static _Unwind_Reason_Code
++sigexcept_unwind_stop (int version __attribute__ ((__unused__)),
++        _Unwind_Action actions,
++         _Unwind_Exception_Class exc_class __attribute__ ((__unused__)),
++         struct _Unwind_Exception *exc_obj __attribute__ ((__unused__)),
++         struct _Unwind_Context *context __attribute__ ((__unused__)),
++         void *exception_info_ptr __attribute__ ((__unused__)))
++{
++  if ((actions & _UA_END_OF_STACK) != 0) {
++    /* Signal exception not handled. Restore the default handler
++       and let it proceed with the signal. */
++    struct sigaction act;
++    memset(&act, 0, sizeof(struct sigaction));
++    act.sa_handler = SIG_DFL;
++    if (sigaction(SIGSEGV, &act, NULL) != 0)
++      exit(SIGSEGV);
++    }
++  return _URC_NO_REASON;
++}
++
++static void
++sigexcept_exception_cleanup (
++        _Unwind_Reason_Code reason __attribute__ ((__unused__)),
++        struct _Unwind_Exception* exc)
++{
++  free(exc);
++}
++
++static void
++sigexcept_unwind_trampoline (void)
++{
++  struct _Unwind_Exception *exc =
++          calloc(1, sizeof(struct _Unwind_Exception));
++  exc->exception_cleanup = sigexcept_exception_cleanup;
++  _Unwind_ForcedUnwind(exc, sigexcept_unwind_stop, NULL);
++}
++
++#define SIGEXCEPT_ERROR -1
++#define SIGEXCEPT_UNREGISTERED 0
++#define SIGEXCEPT_REGISTERED 1
++
++void
++_register_signal_exceptions (void)
++{
++  static char sigexcept_status = SIGEXCEPT_UNREGISTERED;
++  struct sigaction sigsegv_sa;
++  if (sigexcept_status != SIGEXCEPT_UNREGISTERED)
++    return;
++  memset(&sigsegv_sa, 0, sizeof(struct sigaction));
++  if (sigaction(SIGSEGV, NULL, &sigsegv_sa) != 0 ||
++          sigsegv_sa.sa_handler != SIG_DFL)
++    goto error;
++  memset(&sigsegv_sa, 0, sizeof(struct sigaction));
++  sigsegv_sa.sa_sigaction = SIGEXCEPT_SIGSEGV_HANDLER;
++  sigsegv_sa.sa_flags = SA_SIGINFO;
++  if (sigaction(SIGSEGV, &sigsegv_sa, NULL) != 0)
++    goto error;
++  sigexcept_status = SIGEXCEPT_REGISTERED;
++  return;
++error:
++  sigexcept_status = SIGEXCEPT_ERROR;
++  return;
++}
++
++#else /* !defined (inhibit_libc) && defined (SIGEXCEPT_SIGSEGV_HANDLER) */
++
++void
++_register_signal_exceptions (void)
++{
++}
++
++#endif /* !defined (inhibit_libc) && defined (SIGEXCEPT_SIGSEGV_HANDLER) */
+ 
+ #include "unwind.inc"
+ 
+diff --git a/libgcc/unwind-generic.h b/libgcc/unwind-generic.h
+index 639c96f..fb7dd4d 100644
+--- a/libgcc/unwind-generic.h
++++ b/libgcc/unwind-generic.h
+@@ -216,6 +216,9 @@ _Unwind_SjLj_Resume (struct _Unwind_Exception *);
+ extern _Unwind_Reason_Code LIBGCC2_UNWIND_ATTRIBUTE
+ _Unwind_SjLj_Resume_or_Rethrow (struct _Unwind_Exception *);
+ 
++/* Register Signal Exceptions.  */
++extern void _register_signal_exceptions (void);
++
+ /* @@@ The following provide access to the base addresses for text
+    and data-relative addressing in the LDSA.  In order to stay link
+    compatible with the standard ABI for IA-64, we inline these.  */
