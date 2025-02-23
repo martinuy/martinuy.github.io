@@ -191,7 +191,7 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 <p>FreeBSD&#8217;s <em>buf_ring</em> allows reads and writes of one entry at a time. There is one strong invariant: <em>at least one entry is always empty in the buffer</em>. The reason is to have a stopper sentinel which prevents Producers from writing unread entries. To write a value (<em>buf_ring_enqueue</em> function), Producers read the current Producer Head (<em>prod_head</em>), calculate its next value considering buffer wrap-around (<em>prod_next</em>) and read the current Consumer Tail (<em>cons_tail</em>).</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ac2040657ce718799768" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67bac2ab7e556257002065" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -215,19 +215,19 @@ cons_tail = br-&gt;br_cons_tail;</textarea></div>
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ac2040657ce718799768-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657ce718799768-2">2</div>
-<div class="crayon-num" data-line="crayon-67ac2040657ce718799768-3">3</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e556257002065-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e556257002065-2">2</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e556257002065-3">3</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ac2040657ce718799768-1">
+<div class="crayon-line" id="crayon-67bac2ab7e556257002065-1">
 <span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_prod_head</span><span class="crayon-sy">;</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657ce718799768-2">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e556257002065-2">
 <span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>+<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">&amp; br-&gt;br_prod_mask;</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657ce718799768-3">
+<div class="crayon-line" id="crayon-67bac2ab7e556257002065-3">
 <span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_cons_tail</span><span class="crayon-sy">;</span>
 </div>
 </div></td>
@@ -239,7 +239,7 @@ cons_tail = br-&gt;br_cons_tail;</textarea></div>
 <p>If <em>cons_tail</em> is equal to <em>prod_next</em>, the invariant of <em>one entry always empty</em> would be broken. As a result, there is a check before trying the CAS:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ac2040657d1660662065" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67bac2ab7e55b622753328" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -263,19 +263,19 @@ if (prod_next == cons_tail) {
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ac2040657d1660662065-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d1660662065-2">2</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d1660662065-3">3</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55b622753328-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55b622753328-2">2</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55b622753328-3">3</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ac2040657d1660662065-1">
+<div class="crayon-line" id="crayon-67bac2ab7e55b622753328-1">
 <span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>==<span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d1660662065-2">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55b622753328-2">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d1660662065-3"><span class="crayon-sy">}</span></div>
+<div class="crayon-line" id="crayon-67bac2ab7e55b622753328-3"><span class="crayon-sy">}</span></div>
 </div></td>
 					</tr>
 				</table>
@@ -286,7 +286,7 @@ if (prod_next == cons_tail) {
 <p>CAS and entry writing:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ac2040657d3547037030" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67bac2ab7e55c746321371" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -310,17 +310,17 @@ br-&gt;br_ring[prod_head] = buf;</textarea></div>
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ac2040657d3547037030-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d3547037030-2">2</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d3547037030-3">3</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55c746321371-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55c746321371-2">2</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55c746321371-3">3</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ac2040657d3547037030-1">
+<div class="crayon-line" id="crayon-67bac2ab7e55c746321371-1">
 <span class="crayon-st">while</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">!</span><span class="crayon-e">atomic_cmpset_acq_int</span><span class="crayon-sy">(</span><span class="crayon-sy">&amp;br-&gt;br_prod_head, prod_head, prod_next));</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d3547037030-2">&nbsp;</div>
-<div class="crayon-line" id="crayon-67ac2040657d3547037030-3">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55c746321371-2">&nbsp;</div>
+<div class="crayon-line" id="crayon-67bac2ab7e55c746321371-3">
 <span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-i">prod_head</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">buf</span><span class="crayon-sy">;</span>
 </div>
 </div></td>
@@ -340,7 +340,7 @@ the circumstances that can expose the problem. This is because of a more likely�
 <p></p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67ac2040657d4572583970" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-67bac2ab7e55d006986360" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -402,175 +402,175 @@ main: Success</textarea></div>
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-2">2</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-4">4</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-6">6</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-8">8</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-10">10</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-12">12</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-14">14</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-15">15</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-16">16</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-17">17</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-18">18</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-19">19</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-20">20</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-21">21</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-22">22</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-23">23</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-24">24</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-25">25</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-26">26</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-27">27</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-28">28</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-29">29</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-30">30</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-31">31</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-32">32</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-33">33</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-34">34</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-35">35</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-36">36</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-37">37</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-38">38</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-39">39</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-40">40</div>
-<div class="crayon-num" data-line="crayon-67ac2040657d4572583970-41">41</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67ac2040657d4572583970-42">42</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-2">2</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-4">4</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-6">6</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-7">7</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-8">8</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-9">9</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-10">10</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-11">11</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-12">12</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-13">13</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-14">14</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-15">15</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-16">16</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-17">17</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-18">18</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-19">19</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-20">20</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-21">21</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-22">22</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-23">23</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-24">24</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-25">25</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-26">26</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-27">27</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-28">28</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-29">29</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-30">30</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-31">31</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-32">32</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-33">33</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-34">34</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-35">35</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-36">36</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-37">37</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-38">38</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-39">39</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-40">40</div>
+<div class="crayon-num" data-line="crayon-67bac2ab7e55d006986360-41">41</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2ab7e55d006986360-42">42</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-1">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-1">
 <span class="crayon-i">main</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Start</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-2">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-2">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-3">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-3">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-4">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-4">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Waiting </span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-e">the </span><span class="crayon-e">attack </span><span class="crayon-e">signal</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-5">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-5">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-6">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-6">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-7">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-7">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Waiting </span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-e">the </span><span class="crayon-e">attack </span><span class="crayon-e">signal</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-8">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-8">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-9">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-9">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-10">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-10">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Waiting </span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-e">the </span><span class="crayon-e">attack </span><span class="crayon-e">signal</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-11">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-11">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Flush </span><span class="crayon-e">the </span><span class="crayon-e">queue</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">filled </span><span class="crayon-e">with </span><span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-i">entries</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">so </span><span class="crayon-e">more </span><span class="crayon-e">producers </span><span class="crayon-e">can </span><span class="crayon-e">join </span><span class="crayon-e">the </span><span class="crayon-e">CAS </span><span class="crayon-e">loop</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-12">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-12">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Read </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-13">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-13">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Value </span><span class="crayon-i">retrieved</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-14">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-14">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Read </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">1</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-15">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-15">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Value </span><span class="crayon-i">retrieved</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-16">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-16">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">2</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-17">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-17">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">2</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-18">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-18">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Waiting </span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-e">the </span><span class="crayon-e">attack </span><span class="crayon-e">signal</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-19">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-19">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">About </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">execute </span><span class="crayon-i">CAS</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-e">Values </span><span class="crayon-i">read</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">prod_next</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">2</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-20">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-20">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">All </span><span class="crayon-e">producers </span><span class="crayon-e">ready </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">attack</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-21">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-21">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Queue </span><span class="crayon-st">is</span><span class="crayon-h"> </span><span class="crayon-i">full</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">flush </span><span class="crayon-e">it </span><span class="crayon-e">first</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-22">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-22">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Read </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">2</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-23">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-23">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Value </span><span class="crayon-i">retrieved</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-24">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-24">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Read </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">3</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-25">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-25">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Value </span><span class="crayon-i">retrieved</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-26">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-26">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Read </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-27">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-27">
 <span class="crayon-i">Consumer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Value </span><span class="crayon-i">retrieved</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-28">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-28">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">cons_tail</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-29">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-29">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Launch </span><span class="crayon-i">attack</span><span class="crayon-sy">!</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-30">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-30">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">CAS </span><span class="crayon-i">succeeded</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">2</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-31">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-31">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Wrote </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">1</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-32">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-32">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">CAS </span><span class="crayon-i">succeeded</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">3</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-33">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-33">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Wrote </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">2</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-34">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-34">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">CAS </span><span class="crayon-i">succeeded</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-35">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-35">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Wrote </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">3</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-36">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-36">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">CAS </span><span class="crayon-i">succeeded</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_prod_head</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-37">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-37">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Wrote </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">a</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-38">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-38">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">All </span><span class="crayon-e">queue </span><span class="crayon-e">entries </span><span class="crayon-e">were </span><span class="crayon-e">written </span><span class="crayon-i">with</span><span class="crayon-h"> </span><span class="crayon-s">'a'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">none </span><span class="crayon-e">of </span><span class="crayon-e">them </span><span class="crayon-e">read</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-39">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-39">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">The</span><span class="crayon-h"> </span><span class="crayon-s">'one entry always empty'</span><span class="crayon-h"> </span><span class="crayon-e">invariant </span><span class="crayon-e">has </span><span class="crayon-e">been </span><span class="crayon-e">broken </span><span class="crayon-e">at </span><span class="crayon-r">this</span><span class="crayon-h"> </span><span class="crayon-e">point</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-40">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-40">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">Writing</span><span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-h"> </span><span class="crayon-s">'b'</span><span class="crayon-h"> </span><span class="crayon-e">would </span><span class="crayon-e">corrupt </span><span class="crayon-e">an </span><span class="crayon-e">unread </span><span class="crayon-e">entry</span>
 </div>
-<div class="crayon-line" id="crayon-67ac2040657d4572583970-41">
+<div class="crayon-line" id="crayon-67bac2ab7e55d006986360-41">
 <span class="crayon-i">Producer</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">Wrote </span><span class="crayon-i">br</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">br_ring</span><span class="crayon-sy">[</span><span class="crayon-cn">1</span><span class="crayon-sy">]</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-i">b</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67ac2040657d4572583970-42">
+<div class="crayon-line crayon-striped-line" id="crayon-67bac2ab7e55d006986360-42">
 <span class="crayon-i">main</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">Success</span>
 </div>
 </div></td>
@@ -578,7 +578,7 @@ main: Success</textarea></div>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0028 seconds] -->
+<!-- [Format Time: 0.0030 seconds] -->
 <p>You see there how Producers 1 to 4 first waited before trying the CAS but after passing the <em>prod_next == cons_tail</em> check. Producer 5 and Consumer 1 are helpers to generate this condition. Once achieved, Producer 5 calls each waiting producer in the right order to move, succeed in the CAS and write an entry to the ring-buffer. All entries are eventually written breaking the <em>one entry always empty</em> invariant. Producer 5 is then able to write one more entry and overwrite an unread one.</p>
 <p>Please note that the use of many Producers is for illustration purposes only: a couple should be enough -ready for the challenge?-.</p>
 <h4>Proposed fix</h4>
@@ -674,10 +674,10 @@ main: Success</textarea></div>
 			</section><section id="search-2" class="widget widget_search">
 
 <form role="search" method="get" class="search-form" action=".//">
-	<label for="search-form-67ac204069c3a">
+	<label for="search-form-67bac2ab82e98">
 		<span class="screen-reader-text">Search for:</span>
 	</label>
-	<input type="search" id="search-form-67ac204069c3a" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<input type="search" id="search-form-67bac2ab82e98" class="search-field" placeholder="Search &hellip;" value="" name="s">
 	<button type="submit" class="search-submit"><svg class="icon icon-search" aria-hidden="true" role="img"> <use href="#icon-search" xlink:href="#icon-search"></use> </svg><span class="screen-reader-text">Search</span></button>
 </form>
 </section></aside><!-- #secondary -->
