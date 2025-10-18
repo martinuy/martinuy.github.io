@@ -24,7 +24,7 @@
 <link rel="alternate" type="application/rss+xml" title="martin.uy &raquo; How to debug JIT compiled methods in OpenJDK JVM? Comments Feed" href="./feed/index.html">
 <script type="text/javascript">
 /* <![CDATA[ */
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":".\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.2"}};
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":".\/\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.4"}};
 /*! This file is auto-generated */
 !function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
 /* ]]> */
@@ -43,7 +43,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 		background: none !important;
 		padding: 0 !important;
 	}</style>
-<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=6.7.2" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=6.7.4" type="text/css" media="all">
 <style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
 .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
 <style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
@@ -51,7 +51,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
 :root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
 <link rel="stylesheet" id="twentyseventeen-fonts-css" href="https://fonts.googleapis.com/css?family=Libre+Franklin%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C800%2C800i&#038;subset=latin%2Clatin-ext" type="text/css" media="all">
-<link rel="stylesheet" id="twentyseventeen-style-css" href="./../wp-content/themes/twentyseventeen/style.css?ver=6.7.2" type="text/css" media="all">
+<link rel="stylesheet" id="twentyseventeen-style-css" href="./../wp-content/themes/twentyseventeen/style.css?ver=6.7.4" type="text/css" media="all">
 <!--[if lt IE 9]>
 <link rel='stylesheet' id='twentyseventeen-ie8-css' href='.//wp-content/themes/twentyseventeen/assets/css/ie8.css?ver=1.0' type='text/css' media='all' />
 <![endif]-->
@@ -70,7 +70,7 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 <link rel="https://api.w.org/" href="./../wp-json/index.html">
 <link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/79/index.html">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.7.2">
+<meta name="generator" content="WordPress 6.7.4">
 <link rel="canonical" href="./index.html">
 <link rel="shortlink" href="./../index.html?p=79">
 <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fhow-to-debug-compiled-jit-generated-code-in-hotspot-openjdk-jvm-linux-x86_64%2F">
@@ -138,7 +138,7 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 <p>There are some JVM arguments useful to get information about JIT compiled methods:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa127494906347" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9ceb7500858943" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -158,19 +158,19 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67bac2afaa127494906347-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e15c9ceb7500858943-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67bac2afaa127494906347-1">-<span class="crayon-i">Xcomp</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">UnlockDiagnosticVMOptions</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">PrintAssembly</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span><span class="crayon-i">PrintAssemblyOptions</span>=<span class="crayon-i">hsdis</span>-<span class="crayon-i">print</span>-<span class="crayon-i">bytes</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">LogCompilation</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span><span class="crayon-i">LogFile</span>=/<span class="crayon-i">tmp</span>/<span class="crayon-i">java_compilation_log</span><span class="crayon-sy">.</span><span class="crayon-i">log</span>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e15c9ceb7500858943-1">-<span class="crayon-i">Xcomp</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">UnlockDiagnosticVMOptions</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">PrintAssembly</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span><span class="crayon-i">PrintAssemblyOptions</span>=<span class="crayon-i">hsdis</span>-<span class="crayon-i">print</span>-<span class="crayon-i">bytes</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span>+<span class="crayon-i">LogCompilation</span><span class="crayon-h"> </span>-<span class="crayon-i">XX</span><span class="crayon-sy">:</span><span class="crayon-i">LogFile</span>=/<span class="crayon-i">tmp</span>/<span class="crayon-i">java_compilation_log</span><span class="crayon-sy">.</span><span class="crayon-i">log</span>
 </div></div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0002 seconds] -->
+<!-- [Format Time: 0.0003 seconds] -->
 <p>Note: <em>+PrintAssembly</em> argument can be used to disassemble compiled code but requires a plugin library called <em>hsdis</em> in some JDK releases such as 8. In <em>hotspot/src/share/tools/hsdis</em> directory you will find the plugin code. To build it, open a command line and run:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa12f599120598" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cebd462432522" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -191,9 +191,9 @@ export BINUTILS=&lt;path-to-binutils&gt; &amp;&amp; touch $BINUTILS/bfd/doc/bfd.
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67bac2afaa12f599120598-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e15c9cebd462432522-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67bac2afaa12f599120598-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e15c9cebd462432522-1">
 <span class="crayon-e">export </span><span class="crayon-i">BINUTILS</span>=<span class="crayon-h">&lt;</span><span class="crayon-i">path</span>-<span class="crayon-st">to</span>-<span class="crayon-i">binutils</span><span class="crayon-h">&gt;</span><span class="crayon-h"> </span>&&<span class="crayon-h"> </span><span class="crayon-r">touch</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-i">BINUTILS</span>/<span class="crayon-i">bfd</span>/<span class="crayon-i">doc</span>/<span class="crayon-i">bfd</span><span class="crayon-e">.info</span><span class="crayon-h"> </span>&&<span class="crayon-h"> </span><span class="crayon-r">make</span><span class="crayon-h"> </span><span class="crayon-i">all64</span>
 </div></div></td>
 					</tr>
@@ -207,7 +207,7 @@ export BINUTILS=&lt;path-to-binutils&gt; &amp;&amp; touch $BINUTILS/bfd/doc/bfd.
 <p>Java code:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa130228199447" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cebf604643970" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -237,47 +237,47 @@ public class Main {
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67bac2afaa130228199447-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa130228199447-2">2</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa130228199447-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa130228199447-4">4</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa130228199447-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa130228199447-6">6</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa130228199447-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa130228199447-8">8</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa130228199447-9">9</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cebf604643970-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cebf604643970-2">2</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cebf604643970-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cebf604643970-4">4</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cebf604643970-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cebf604643970-6">6</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cebf604643970-7">7</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cebf604643970-8">8</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cebf604643970-9">9</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67bac2afaa130228199447-1">
+<div class="crayon-line" id="crayon-68f3e15c9cebf604643970-1">
 <span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">Main</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa130228199447-2">&nbsp;</div>
-<div class="crayon-line" id="crayon-67bac2afaa130228199447-3">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cebf604643970-2">&nbsp;</div>
+<div class="crayon-line" id="crayon-68f3e15c9cebf604643970-3">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-m">volatile</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-i">exitCode</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">0xff</span><span class="crayon-sy">;</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa130228199447-4">&nbsp;</div>
-<div class="crayon-line" id="crayon-67bac2afaa130228199447-5">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cebf604643970-4">&nbsp;</div>
+<div class="crayon-line" id="crayon-68f3e15c9cebf604643970-5">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-t">String</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-i">args</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-m">throws</span><span class="crayon-h"> </span><span class="crayon-e">Throwable</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa130228199447-6">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cebf604643970-6">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">System</span><span class="crayon-sy">.</span><span class="crayon-e">exit</span><span class="crayon-sy">(</span><span class="crayon-i">exitCode</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa130228199447-7">
+<div class="crayon-line" id="crayon-68f3e15c9cebf604643970-7">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa130228199447-8">&nbsp;</div>
-<div class="crayon-line" id="crayon-67bac2afaa130228199447-9"><span class="crayon-sy">}</span></div>
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cebf604643970-8">&nbsp;</div>
+<div class="crayon-line" id="crayon-68f3e15c9cebf604643970-9"><span class="crayon-sy">}</span></div>
 </div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0003 seconds] -->
+<!-- [Format Time: 0.0005 seconds] -->
 <p>Main::main JIT method information:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa131148755572" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cec1610997295" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -323,111 +323,111 @@ PrintAssembly request changed to PrintOptoAssembly
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-2">2</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-4">4</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-6">6</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-8">8</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-10">10</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-12">12</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-14">14</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-15">15</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-16">16</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-17">17</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-18">18</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-19">19</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-20">20</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-21">21</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-22">22</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-23">23</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-24">24</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa131148755572-25">25</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa131148755572-26">26</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-2">2</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-4">4</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-6">6</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-7">7</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-8">8</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-9">9</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-10">10</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-11">11</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-12">12</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-13">13</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-14">14</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-15">15</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-16">16</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-17">17</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-18">18</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-19">19</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-20">20</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-21">21</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-22">22</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-23">23</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-24">24</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec1610997295-25">25</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec1610997295-26">26</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-1">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-1">
 <span class="crayon-e">PrintAssembly</span><span class="crayon-h"> </span><span class="crayon-e">request</span><span class="crayon-h"> </span><span class="crayon-e">changed</span><span class="crayon-h"> </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">PrintOptoAssembly</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-2">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-2">
 <span class="crayon-sy">{</span><span class="crayon-i">method</span><span class="crayon-sy">}</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-3">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-3">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-r">this</span><span class="crayon-h"> </span><span class="crayon-i">oop</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x00007ffba04642b8</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-4">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-4">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">method </span><span class="crayon-i">holder</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'Main'</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-5">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-5">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">constants</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffba0464058</span><span class="crayon-h"> </span><span class="crayon-e">constant</span><span class="crayon-h"> </span><span class="crayon-e">pool</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-cn">29</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-cn">0x00007ffba0464058</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-s">'Main'</span><span class="crayon-h"> </span><span class="crayon-i">cache</span>=<span class="crayon-cn">0x00007ffba04643c8</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-6">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-6">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">access</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x81000009</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-7">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-7">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">name</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s">'main'</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-8">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-8">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">signature</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'([Ljava/lang/String;)V'</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-9">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-9">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">max </span><span class="crayon-i">stack</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">2</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-10">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-10">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">max </span><span class="crayon-i">locals</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">1</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-11">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-11">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">size </span><span class="crayon-e">of </span><span class="crayon-i">params</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">1</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-12">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-12">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">method </span><span class="crayon-i">size</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">13</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-13">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-13">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">highest </span><span class="crayon-i">level</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">3</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-14">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-14">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">vtable </span><span class="crayon-i">index</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-cn">2</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-15">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-15">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">i2i </span><span class="crayon-i">entry</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffb8d023be0</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-16">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-16">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-i">adapters</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">AHE</span><span class="crayon-sy">@</span><span class="crayon-cn">0x00007ffb9c0fbdb8</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0xb0000000</span><span class="crayon-h"> </span><span class="crayon-i">i2c</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0x00007ffb8d1466a0</span><span class="crayon-h"> </span><span class="crayon-i">c2i</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0x00007ffb8d1467da</span><span class="crayon-h"> </span><span class="crayon-i">c2iUV</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0x00007ffb8d1467ad</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-17">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-17">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">compiled </span><span class="crayon-i">entry</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffb8d571ec0</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-18">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-18">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">code </span><span class="crayon-i">size</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">7</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-19">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-19">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">code </span><span class="crayon-i">start</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0x00007ffba04642a8</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-20">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-20">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">code </span><span class="crayon-st">end</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-i">excl</span><span class="crayon-sy">)</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffba04642af</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-21">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-21">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">method </span><span class="crayon-i">data</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0x00007ffba04645b8</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-22">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-22">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">checked </span><span class="crayon-e">ex </span><span class="crayon-i">length</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">1</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-23">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-23">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">checked </span><span class="crayon-e">ex </span><span class="crayon-i">start</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x00007ffba04642b4</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-24">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-24">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">linenumber </span><span class="crayon-i">start</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x00007ffba04642af</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa131148755572-25">
+<div class="crayon-line" id="crayon-68f3e15c9cec1610997295-25">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">localvar </span><span class="crayon-i">length</span><span class="crayon-sy">:</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa131148755572-26">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec1610997295-26">
 <span class="crayon-h"> </span>-<span class="crayon-h"> </span><span class="crayon-e">compiled </span><span class="crayon-i">code</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i">nmethod</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">16800</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">876</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">3</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-i">Main</span><span class="crayon-sy">:</span><span class="crayon-sy">:</span><span class="crayon-e">main</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-cn">7</span><span class="crayon-h"> </span><span class="crayon-i">bytes</span><span class="crayon-sy">)</span>
 </div>
 </div></td>
@@ -435,11 +435,11 @@ PrintAssembly request changed to PrintOptoAssembly
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0011 seconds] -->
+<!-- [Format Time: 0.0022 seconds] -->
 <p>Main::main JIT method code:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa132826473537" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cec2147978205" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -474,65 +474,65 @@ PrintAssembly request changed to PrintOptoAssembly
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67bac2afaa132826473537-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa132826473537-2">2</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa132826473537-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa132826473537-4">4</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa132826473537-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa132826473537-6">6</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa132826473537-7">7</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa132826473537-8">8</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa132826473537-9">9</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa132826473537-10">10</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa132826473537-11">11</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa132826473537-12">12</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa132826473537-13">13</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa132826473537-14">14</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa132826473537-15">15</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec2147978205-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec2147978205-2">2</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec2147978205-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec2147978205-4">4</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec2147978205-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec2147978205-6">6</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec2147978205-7">7</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec2147978205-8">8</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec2147978205-9">9</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec2147978205-10">10</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec2147978205-11">11</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec2147978205-12">12</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec2147978205-13">13</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec2147978205-14">14</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec2147978205-15">15</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67bac2afaa132826473537-1">
+<div class="crayon-line" id="crayon-68f3e15c9cec2147978205-1">
 <span class="crayon-cn">000</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-i">B1</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-p">#	N1 &lt;- BLOCK HEAD IS JUNK&nbsp;&nbsp; Freq: 1</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa132826473537-2">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec2147978205-2">
 <span class="crayon-cn">000</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-p"># stack bang (104 bytes)</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa132826473537-3">
+<div class="crayon-line" id="crayon-68f3e15c9cec2147978205-3">
 <span class="crayon-h">	</span><span class="crayon-e">pushq&nbsp;&nbsp; </span><span class="crayon-i">rbp</span><span class="crayon-h">	</span><span class="crayon-p"># Save rbp</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa132826473537-4">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec2147978205-4">
 <span class="crayon-h">	</span><span class="crayon-e">subq&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">rsp</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-p">#16	# Create frame</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa132826473537-5">&nbsp;</div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa132826473537-6">
+<div class="crayon-line" id="crayon-68f3e15c9cec2147978205-5">&nbsp;</div>
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec2147978205-6">
 <span class="crayon-cn">00c</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-e">movl&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">RSI</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-p">#21	# int</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa132826473537-7">
+<div class="crayon-line" id="crayon-68f3e15c9cec2147978205-7">
 <span class="crayon-cn">011</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-e">movq&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">R10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">java</span>/<span class="crayon-i">lang</span>/<span class="crayon-t">Class</span><span class="crayon-sy">:</span><span class="crayon-e ">exact *</span><span class="crayon-h">	</span><span class="crayon-p"># ptr</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa132826473537-8">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec2147978205-8">
 <span class="crayon-cn">01b</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-e">movl&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">R11</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-i">R10</span><span class="crayon-h"> </span>+<span class="crayon-h"> </span><span class="crayon-p">#104 (8-bit)]	# int ! Field: volatile Main.exitCode</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa132826473537-9">
+<div class="crayon-line" id="crayon-68f3e15c9cec2147978205-9">
 <span class="crayon-cn">01f</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-i">MEMBAR</span>-<span class="crayon-i">acquire</span><span class="crayon-h"> </span><span class="crayon-sy">!</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">empty </span><span class="crayon-i">encoding</span><span class="crayon-sy">)</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa132826473537-10">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec2147978205-10">
 <span class="crayon-cn">01f</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-e">movl&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">RBP</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">R11</span><span class="crayon-h">	</span><span class="crayon-p"># spill</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa132826473537-11">
+<div class="crayon-line" id="crayon-68f3e15c9cec2147978205-11">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-i">nop</span><span class="crayon-h"> 	</span><span class="crayon-p"># 1 bytes pad for loops and calls</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa132826473537-12">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec2147978205-12">
 <span class="crayon-cn">023</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-i">call</span><span class="crayon-sy">,</span><span class="crayon-m">static</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-e">wrapper </span><span class="crayon-st">for</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-e">uncommon_trap</span><span class="crayon-sy">(</span><span class="crayon-i">reason</span>=<span class="crayon-s">'unloaded'</span><span class="crayon-h"> </span><span class="crayon-i">action</span>=<span class="crayon-s">'reinterpret'</span><span class="crayon-h"> </span><span class="crayon-i">index</span>=<span class="crayon-s">'21'</span><span class="crayon-sy">)</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa132826473537-13">
+<div class="crayon-line" id="crayon-68f3e15c9cec2147978205-13">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-p"># Main::main @ bci:3&nbsp;&nbsp;L[0]=_ STK[0]=RBP</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa132826473537-14">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec2147978205-14">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-p"># OopMap{off=40}</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa132826473537-15">
+<div class="crayon-line" id="crayon-68f3e15c9cec2147978205-15">
 <span class="crayon-cn">028</span><span class="crayon-h">&nbsp;&nbsp; 	</span><span class="crayon-i">int3</span><span class="crayon-h">	</span><span class="crayon-p"># ShouldNotReachHere</span>
 </div>
 </div></td>
@@ -540,7 +540,7 @@ PrintAssembly request changed to PrintOptoAssembly
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0005 seconds] -->
+<!-- [Format Time: 0.0009 seconds] -->
 <p>You see there how the <em>Main::exitCode</em> field value is loaded into a register, and a call to a static method -System::exit, presumably- is made.</p>
 <p>The JVM allows transitions from interpreted <em>bytecodes</em> to JIT compiled methods and viceversa. For this to be accomplished, methods have adapters which arrange the call frame according to the source and destination ABIs.</p>
 <p>Once an adapter to JIT compiled code is executed, the native method starts. If we look at Main::main information above, <em>compiled entry</em> has the starting address. Our goal is to set a breakpoint there.</p>
@@ -548,7 +548,7 @@ PrintAssembly request changed to PrintOptoAssembly
 <p><a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/76a9c9cf14f1/src/share/vm/compiler/compileBroker.cpp#l1919">CompileBroker::invoke_compiler_on_method(CompileTask*)</a> is an interesting point in that regard. This is where methods get compiled either by C1, C2 or any other JIT compiler. In particular, right after the <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/76a9c9cf14f1/src/share/vm/compiler/compileBroker.cpp#l2000">task-&gt;code()</a> call, the compiled method is ready:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa134505739720" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cec4317638348" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -569,20 +569,20 @@ if (!ci_env.failing() &amp;&amp; task-&gt;code() == NULL) {</textarea></div>
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67bac2afaa134505739720-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e15c9cec4317638348-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67bac2afaa134505739720-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e15c9cec4317638348-1">
 <span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">!</span><span class="crayon-i">ci_env</span><span class="crayon-sy">.</span><span class="crayon-e">failing</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span>&&<span class="crayon-h"> </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-e">code</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span>==<span class="crayon-h"> </span><span class="crayon-t">NULL</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
 </div></div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0002 seconds] -->
+<!-- [Format Time: 0.0004 seconds] -->
 <p>If we look at the assembly in x86_64, here is the exact point:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa135567195362" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cec6184381507" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -605,15 +605,15 @@ if (!ci_env.failing() &amp;&amp; task-&gt;code() == NULL) {</textarea></div>
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67bac2afaa135567195362-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa135567195362-2">2</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec6184381507-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec6184381507-2">2</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67bac2afaa135567195362-1">
+<div class="crayon-line" id="crayon-68f3e15c9cec6184381507-1">
 <span class="crayon-r ">0x00007ffff6084947</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span>+<span class="crayon-cn">1555</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">	</span><span class="crayon-v ">callq</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0x7ffff607f486</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-v ">CompileTask</span><span class="crayon-sy">:</span><span class="crayon-sy">:</span><span class="crayon-v ">code</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-v ">const</span><span class="crayon-h">&gt;</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa135567195362-2">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec6184381507-2">
 <span class="crayon-r ">0x00007ffff608494c</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span>+<span class="crayon-cn">1560</span><span class="crayon-h">&gt;</span><span class="crayon-sy">:</span><span class="crayon-h">	</span><span class="crayon-v ">test</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-v ">%rax</span><span class="crayon-sy">,</span><span class="crayon-v ">%rax</span>
 </div>
 </div></td>
@@ -621,11 +621,11 @@ if (!ci_env.failing() &amp;&amp; task-&gt;code() == NULL) {</textarea></div>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0001 seconds] -->
+<!-- [Format Time: 0.0003 seconds] -->
 <p>We will then set our breakpoint right after the call to <em>CompileTask::code</em>. Note: if rebuilding the JVM is possible, we can add a filter to only break in the method of our interest:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa136008334570" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cec8852661849" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -649,30 +649,30 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67bac2afaa136008334570-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa136008334570-2">2</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa136008334570-3">3</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec8852661849-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9cec8852661849-2">2</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9cec8852661849-3">3</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67bac2afaa136008334570-1">
+<div class="crayon-line" id="crayon-68f3e15c9cec8852661849-1">
 <span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">strcmp</span><span class="crayon-sy">(</span><span class="crayon-i">target</span>-<span class="crayon-h">&gt;</span><span class="crayon-e">name</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span>-<span class="crayon-h">&gt;</span><span class="crayon-e">as_utf8</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"&lt;method_name_of_interest&gt;"</span><span class="crayon-sy">)</span><span class="crayon-h"> </span>==<span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa136008334570-2">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9cec8852661849-2">
 <span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">volatile</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-i">a</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">;</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa136008334570-3"><span class="crayon-sy">}</span></div>
+<div class="crayon-line" id="crayon-68f3e15c9cec8852661849-3"><span class="crayon-sy">}</span></div>
 </div></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0002 seconds] -->
+<!-- [Format Time: 0.0003 seconds] -->
 <p>We now have all the information needed about the compiled method:</p>
 <p><strong>Method name</strong></p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa137536654128" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cec9720804210" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -692,9 +692,9 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67bac2afaa137536654128-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e15c9cec9720804210-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67bac2afaa137536654128-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e15c9cec9720804210-1">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">x</span>/<span class="crayon-i">s</span><span class="crayon-h"> </span><span class="crayon-i">target</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_name</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_symbol</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_body</span>
 </div></div></td>
 					</tr>
@@ -706,7 +706,7 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 <p><strong>Compiler level (C1, C2)</strong></p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa138987580009" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9ceca685034125" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -726,9 +726,9 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67bac2afaa138987580009-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e15c9ceca685034125-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67bac2afaa138987580009-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e15c9ceca685034125-1">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">print</span>/<span class="crayon-i">x</span><span class="crayon-h"> </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_comp_level</span>
 </div></div></td>
 					</tr>
@@ -740,7 +740,7 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 <p><strong>Method blob size</strong></p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa139898199391" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cecc726452495" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -760,9 +760,9 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67bac2afaa139898199391-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e15c9cecc726452495-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67bac2afaa139898199391-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e15c9cecc726452495-1">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">print </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_code_handle</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_nm</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_size</span>
 </div></div></td>
 					</tr>
@@ -774,7 +774,7 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 <p><strong>Method&#8217;s first instruction</strong></p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa13a712413989" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cecd441052845" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -794,9 +794,9 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67bac2afaa13a712413989-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e15c9cecd441052845-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67bac2afaa13a712413989-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e15c9cecd441052845-1">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">x</span>/<span class="crayon-cn">1i</span><span class="crayon-h"> </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_code_handle</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_nm</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_entry_point</span>
 </div></div></td>
 					</tr>
@@ -808,7 +808,7 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 <p>It&#8217;s now possible to set a breakpoint at the beginning of the method:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa13b375938192" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9cece087603440" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -828,9 +828,9 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-67bac2afaa13b375938192-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e15c9cece087603440-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-67bac2afaa13b375938192-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e15c9cece087603440-1">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-st">break</span><span class="crayon-h"> </span>*<span class="crayon-sy">(</span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_code_handle</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_nm</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_entry_point</span><span class="crayon-sy">)</span>
 </div></div></td>
 					</tr>
@@ -843,7 +843,7 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 <p>Dump the JIT compiled method to a file:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-67bac2afaa13c542467807" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f3e15c9ced0353024221" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -869,31 +869,31 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
 					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;">
-<div class="crayon-num" data-line="crayon-67bac2afaa13c542467807-1">1</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa13c542467807-2">2</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa13c542467807-3">3</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa13c542467807-4">4</div>
-<div class="crayon-num" data-line="crayon-67bac2afaa13c542467807-5">5</div>
-<div class="crayon-num crayon-striped-num" data-line="crayon-67bac2afaa13c542467807-6">6</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9ced0353024221-1">1</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9ced0353024221-2">2</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9ced0353024221-3">3</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9ced0353024221-4">4</div>
+<div class="crayon-num" data-line="crayon-68f3e15c9ced0353024221-5">5</div>
+<div class="crayon-num crayon-striped-num" data-line="crayon-68f3e15c9ced0353024221-6">6</div>
 </div>
 				</td>
 						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
-<div class="crayon-line" id="crayon-67bac2afaa13c542467807-1">
+<div class="crayon-line" id="crayon-68f3e15c9ced0353024221-1">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">pagination </span><span class="crayon-e">off</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa13c542467807-2">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9ced0353024221-2">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">logging </span><span class="crayon-i">file</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span><span class="crayon-i">path</span>/<span class="crayon-st">to</span>/<span class="crayon-i">file</span><span class="crayon-h">&gt;</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa13c542467807-3">
+<div class="crayon-line" id="crayon-68f3e15c9ced0353024221-3">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">logging </span><span class="crayon-e">overwrite </span><span class="crayon-e">on</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa13c542467807-4">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9ced0353024221-4">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">logging </span><span class="crayon-e">on</span>
 </div>
-<div class="crayon-line" id="crayon-67bac2afaa13c542467807-5">
+<div class="crayon-line" id="crayon-68f3e15c9ced0353024221-5">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i">x</span>/<span class="crayon-h">&lt;</span><span class="crayon-i">SIZE</span><span class="crayon-h">&gt;</span><span class="crayon-i">i</span><span class="crayon-h"> </span><span class="crayon-i">task</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_code_handle</span>-<span class="crayon-h">&gt;</span><span class="crayon-i">_nm</span>-<span class="crayon-h">&gt;</span><span class="crayon-e">_entry_point</span>
 </div>
-<div class="crayon-line crayon-striped-line" id="crayon-67bac2afaa13c542467807-6">
+<div class="crayon-line crayon-striped-line" id="crayon-68f3e15c9ced0353024221-6">
 <span class="crayon-sy">(</span><span class="crayon-i">gdb</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-e">set </span><span class="crayon-e">logging </span><span class="crayon-i">off</span>
 </div>
 </div></td>
@@ -901,7 +901,7 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 				</table>
 			</div>
 		</div>
-<!-- [Format Time: 0.0003 seconds] -->
+<!-- [Format Time: 0.0005 seconds] -->
 <p></p>
 	</div>
 <!-- .entry-content -->
@@ -1019,10 +1019,10 @@ if (strcmp(target-&gt;name()-&gt;as_utf8(), "&lt;method_name_of_interest&gt;") =
 			</section><section id="search-2" class="widget widget_search">
 
 <form role="search" method="get" class="search-form" action=".//">
-	<label for="search-form-67bac2afafba5">
+	<label for="search-form-68f3e15ca6538">
 		<span class="screen-reader-text">Search for:</span>
 	</label>
-	<input type="search" id="search-form-67bac2afafba5" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<input type="search" id="search-form-68f3e15ca6538" class="search-field" placeholder="Search &hellip;" value="" name="s">
 	<button type="submit" class="search-submit"><svg class="icon icon-search" aria-hidden="true" role="img"> <use href="#icon-search" xlink:href="#icon-search"></use> </svg><span class="screen-reader-text">Search</span></button>
 </form>
 </section></aside><!-- #secondary -->
@@ -1055,7 +1055,7 @@ var twentyseventeenScreenReaderText = {"quote":"<svg class=\"icon icon-quote-rig
 <script type="text/javascript" src="./../wp-content/themes/twentyseventeen/assets/js/skip-link-focus-fix.js?ver=1.0" id="twentyseventeen-skip-link-focus-fix-js"></script>
 <script type="text/javascript" src="./../wp-content/themes/twentyseventeen/assets/js/global.js?ver=1.0" id="twentyseventeen-global-js"></script>
 <script type="text/javascript" src="./../wp-content/themes/twentyseventeen/assets/js/jquery.scrollTo.js?ver=2.1.2" id="jquery-scrollto-js"></script>
-<script type="text/javascript" src="./../wp-includes/js/comment-reply.min.js?ver=6.7.2" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+<script type="text/javascript" src="./../wp-includes/js/comment-reply.min.js?ver=6.7.4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="icon-behance" viewbox="0 0 37 32">
