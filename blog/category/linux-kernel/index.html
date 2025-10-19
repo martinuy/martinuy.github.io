@@ -176,7 +176,7 @@ var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Cl
 <p>To begin with, we can read the <em>gdt</em> register calling <em>native_store_gdt</em> in kernel space (arch/x86/include/asm/desc.h):</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-68f3e769a716b818649433" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f483603e43b009620752" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -196,9 +196,9 @@ native_store_gdt(&amp;gdt_data);</textarea></div>
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e769a716b818649433-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f483603e43b009620752-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e769a716b818649433-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f483603e43b009620752-1">
 <span class="crayon-e">native_store_gdt</span><span class="crayon-sy">(</span><span class="crayon-sy">&amp;gdt_data);</span>
 </div></div></td>
 					</tr>
@@ -209,7 +209,7 @@ native_store_gdt(&amp;gdt_data);</textarea></div>
 <p></p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-68f3e769a7171455758114" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f483603e43f155652284" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -229,9 +229,9 @@ GDT address (%gdt): 0xffffffffff577000, size: 127</textarea></div>
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e769a7171455758114-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f483603e43f155652284-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e769a7171455758114-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f483603e43f155652284-1">
 <span class="crayon-e">GDT </span><span class="crayon-e">address</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">%</span><span class="crayon-i">gdt</span><span class="crayon-sy">)</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">0xffffffffff577000</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">size</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-cn">127</span>
 </div></div></td>
 					</tr>
@@ -297,7 +297,7 @@ GDT address (%gdt): 0xffffffffff577000, size: 127</textarea></div>
 <p><em>Netfilter</em> and <em>iptables</em> -its user-space counter part- let you filter network packets based on their source MAC address. However, there is currently no option to match all packets that meet a specific pattern (i.e.: those with prefix from a certain vendor). A wildcards syntax would be enough to accomplish this goal. In example, the following rule should drop every incoming packet on the <em>ens3</em> interface:</p>
 <!-- Crayon Syntax Highlighter v_2.7.2_beta -->
 
-		<div id="crayon-68f3e769a7999984827610" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
+		<div id="crayon-68f483603ea0d321987549" class="crayon-syntax crayon-theme-classic crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 16px !important; line-height: 20px !important;">
 		
 			<div class="crayon-toolbar" data-settings=" show" style="font-size: 16px !important;height: 24px !important; line-height: 24px !important;">
 <span class="crayon-title"></span>
@@ -317,9 +317,9 @@ iptables -A INPUT -i ens3 -m mac --mac-source *:*:*:*:*:* -j DROP</textarea></di
 				<table class="crayon-table">
 					<tr class="crayon-row">
 				<td class="crayon-nums " data-settings="show">
-					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f3e769a7999984827610-1">1</div></div>
+					<div class="crayon-nums-content" style="font-size: 16px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-68f483603ea0d321987549-1">1</div></div>
 				</td>
-						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f3e769a7999984827610-1">
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 16px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-68f483603ea0d321987549-1">
 <span class="crayon-i">iptables</span><span class="crayon-h"> </span>-<span class="crayon-i">A</span><span class="crayon-h"> </span><span class="crayon-i">INPUT</span><span class="crayon-h"> </span>-<span class="crayon-i">i</span><span class="crayon-h"> </span><span class="crayon-i">ens3</span><span class="crayon-h"> </span>-<span class="crayon-i">m</span><span class="crayon-h"> </span><span class="crayon-i">mac</span><span class="crayon-h"> </span>--<span class="crayon-i">mac</span>-<span class="crayon-e ">source *</span><span class="crayon-sy">:</span>*<span class="crayon-sy">:</span>*<span class="crayon-sy">:</span>*<span class="crayon-sy">:</span>*<span class="crayon-sy">:</span>*<span class="crayon-h"> </span>-<span class="crayon-i">j</span><span class="crayon-h"> </span><span class="crayon-i">DROP</span>
 </div></div></td>
 					</tr>
@@ -410,10 +410,10 @@ iptables -A INPUT -i ens3 -m mac --mac-source *:*:*:*:*:* -j DROP</textarea></di
 			</section><section id="search-2" class="widget widget_search">
 
 <form role="search" method="get" class="search-form" action=".//">
-	<label for="search-form-68f3e769b3cd5">
+	<label for="search-form-68f483604a4c8">
 		<span class="screen-reader-text">Search for:</span>
 	</label>
-	<input type="search" id="search-form-68f3e769b3cd5" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<input type="search" id="search-form-68f483604a4c8" class="search-field" placeholder="Search &hellip;" value="" name="s">
 	<button type="submit" class="search-submit"><svg class="icon icon-search" aria-hidden="true" role="img"> <use href="#icon-search" xlink:href="#icon-search"></use> </svg><span class="screen-reader-text">Search</span></button>
 </form>
 </section></aside><!-- #secondary -->
